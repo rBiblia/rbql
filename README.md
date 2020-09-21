@@ -3,6 +3,7 @@ rBible Query Language – Przewodnik
 
 ## [Wstęp](#wstęp-1)
 ### [Cel](#cel-1)
+### [Definicje](#definicje)
 
 ## [I. Podstawowe operacje](#i-podstawowe-operacje-1)
 ### [1.1. Wielkość liter](#11-wielkość-liter-1)
@@ -41,7 +42,7 @@ Wstęp
 Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu **Effata**, który stworzony został przez [Józefa Kajfosza](https://www.docelu.biblia.info.pl) w latach '90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie **rBQL** (*rBible Query Language* – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:
 
 - *Rozdział I* omawia podstawową jednostkę wyszukiwania – atom (pojedyncze słowo) i jego możliwości rozbudowy.
-- *Rozdział II* omawia sposoby budowania relacji pomiędzy atomami za pomocą dozwolonych operatorów: `i`, `lub`, `albo`, `nie` oraz nawiasy.
+- *Rozdział II* omawia sposoby budowania relacji pomiędzy atomami za pomocą dozwolonych operatorów: `i`, `lub`, `albo`, `nie` oraz nawiasów.
 - *Rozdział III* przedstawia sposoby łączenia możliwości wyszukiwania z rozdziału I i II w bardziej skomplikowane wzorce.
 - *Rozdział IV* pokazuje funkcje dodatkowe, pomocne podczas przeszukiwania.
 
@@ -54,7 +55,7 @@ Celem podręcznika jest wprowadzenie Użytkownika w tematykę wzorców, a dokła
 
 ![Przykładowy wzorzec](/images/pattern.jpg)
 
-Na początek objaśnienie definicji:
+<a name="definicje"></a>Na początek objaśnienie definicji:
 
 - `Słowo` – to pojedynczy ciąg znaków.
 - `Fraza` – to słowa oddzielone spacjami, które tworzą spójny ciąg do odnalezienia.
@@ -367,7 +368,7 @@ Shift + 6
 Pan^Bóg
 ```
 
-*(czyt. Pan albo Bóg)* – wyszuka wersety, w których występuje samo słowo `Pan` albo samo słowo `Bóg`, ale odrzuci te wersety w których słowo `Pan` i `Bóg` występuje jednocześnie.
+*(czyt. Pan albo Bóg)* – wyszuka wersety, w których występuje samo słowo `Pan` albo samo słowo `Bóg`, ale odrzuci te wersety w których słowa `Pan` i `Bóg` występują jednocześnie.
 
 W **Biblii warszawskiej** daje to 3493 wyników.
 
@@ -602,7 +603,7 @@ Boga&powstało@2
 Podsumowanie
 ============
 
-To już koniec. Mamy nadzieję, że tematyka zaawansowanego wyszukiwania została przedstawiona w miarę prostym językiem. Instruktaż ten z pewnością będziesz jeszcze aktualizowany w przyszłości, a uwagi są mile widziane.
+To już koniec. Mamy nadzieję, że tematyka zaawansowanego wyszukiwania została przedstawiona w miarę prostym językiem. Instruktaż ten z pewnością będzie jeszcze aktualizowany w przyszłości, a uwagi są mile widziane.
 
 Próg wejścia dla osób nietechnicznych nie jest wcale taki niski. Trzeba opanować parę terminów i koncepcji, ale kiedy to będzie za nami, zaawansowany tryb wyszukiwania może przynieść wiele korzyści, a tworzenie nowych wzorców będzie czymś naturalnym.
 
@@ -644,7 +645,7 @@ Wyszukaj wersety w których występuje słowo `Bóg` lub `Ojciec` lub oba naraz.
 Bóg&(Ojciec|Król/i)
 ```
 
-Wyszukaj wersety w których występuje słowo `Bóg` wraz ze słowem `Ojciec` 
+Wyszukaj wersety w których występuje słowo `Bóg` wraz ze słowem `Ojciec`
 
 lub gdzie występuje słowo `Bóg` wraz ze słowem `Król` przy czym słowo `Król` wyszukuj nie zważając na wielkość liter
 
