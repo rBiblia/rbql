@@ -55,7 +55,7 @@ Celem podręcznika jest wprowadzenie Użytkownika w tematykę wzorców, a dokła
 
 ![Przykładowy wzorzec](/images/pattern.jpg)
 
-<a name="definicje"></a>Na początek objaśnienie definicji:
+<a id="definicje"></a>Na początek objaśnienie definicji:
 
 - `Słowo` – to pojedynczy ciąg znaków.
 - `Fraza` – to słowa oddzielone spacjami, które tworzą spójny ciąg do odnalezienia.
@@ -712,7 +712,7 @@ Autorzy
 Strona domowa programu: [rbiblia.toborek.info](https://rbiblia.toborek.info)
 
 Przewodnik dostępny jest bezpłatnie w [trybie online](https://github.com/rBiblia/rbql-docs).
-Wszelkie poprawki i propozycje w tym przewodniku będą bardzo mile widziane – prosimy utworzyć `Pull Request` lub utworzyć zgłoszenie poprzez `Issue`.
+Wszelkie poprawki i propozycje w tym przewodniku będą bardzo mile widziane – prosimy utworzyć `Pull Request` lub utworzyć zgłoszenie poprzez `Issues`.
 
 Praca nad programem, tłumaczeniami oraz dokumentacją pochłania środki materialne. Jeżeli możesz, prosimy o [dobrowolne wsparcie projektu](https://rbiblia.toborek.info/donation/).
 
