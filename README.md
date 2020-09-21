@@ -3,7 +3,7 @@ rBible Query Language – Przewodnik
 
 ## [Wstęp](#wstęp-1)
 ### [Cel](#cel-1)
-### [Definicje](#definicje)
+### [Definicje](#definicje-1)
 
 ## [I. Podstawowe operacje](#i-podstawowe-operacje-1)
 ### [1.1. Wielkość liter](#11-wielkość-liter-1)
@@ -55,8 +55,8 @@ Celem podręcznika jest wprowadzenie Użytkownika w tematykę wzorców, a dokła
 
 ![Przykładowy wzorzec](/images/pattern.jpg)
 
-<div id="definicje"></div>
-Na początek objaśnienie definicji:
+### Definicje
+Na początek objaśnienie kilku terminów:
 
 - `Słowo` – to pojedynczy ciąg znaków.
 - `Fraza` – to słowa oddzielone spacjami, które tworzą spójny ciąg do odnalezienia.
