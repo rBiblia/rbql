@@ -55,7 +55,8 @@ Celem podręcznika jest wprowadzenie Użytkownika w tematykę wzorców, a dokła
 
 ![Przykładowy wzorzec](/images/pattern.jpg)
 
-<a id="definicje"></a>Na początek objaśnienie definicji:
+<div id="definicje"></div>
+Na początek objaśnienie definicji:
 
 - `Słowo` – to pojedynczy ciąg znaków.
 - `Fraza` – to słowa oddzielone spacjami, które tworzą spójny ciąg do odnalezienia.
