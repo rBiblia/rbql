@@ -853,7 +853,7 @@ Autorzy
 
 - [Kacper Kość](https://github.com/jaspre) (implementacja rBQL, autor przewodnika)
 - [Rafał Toborek](https://github.com/clash82) (twórca rBiblii, korekty w przewodniku)
-- [Józef Kajfosz](https://www.docelu.biblia.info.pl) (pomysłodwaca i twórca programu *Effata*)
+- [Józef Kajfosz](https://www.docelu.biblia.info.pl) (pomysłodawca i twórca programu *Effata*)
 
 Strona domowa programu: [rbiblia.toborek.info](https://rbiblia.toborek.info)
 
