@@ -503,7 +503,7 @@ Pan&Bóg~
 
 W przypadku, gdy otrzymujemy nieporządane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.
 
-W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.
+W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji, algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.
 
 Poniższa lista przedstawia kolejność priorytetów operatorów (od najwyższego), która brana jest pod uwagę przy analizowaniu wzorca:
 
@@ -545,7 +545,7 @@ chełpliwi^PRAWDA
 
 Wynikiem operatora `^` będzie `PRAWDA`, gdy jedna albo druga strona jest `PRAWDĄ`, lecz wynikiem będzie `FAŁSZ`, jeśli obie strony będą `PRAWDĄ` albo obie strony będą `FAŁSZEM`.
 
-W tym przypadku wynikiem operatora `^` będzie `FAŁSZ`, jeśli słowo `chełpliwi` znajduje się w wersecie, (ponieważ `PRAWDA^PRAWDA` = `FAŁSZ`), w przeciwnym przypadku otrzymalibyśmy `PRAWDĘ` (`FAŁSZ^PRAWDA` = `PRAWDA`).
+W tym przypadku wynikiem operatora `^` będzie `FAŁSZ`, jeśli słowo `chełpliwi` znajduje się w wersecie (ponieważ `PRAWDA^PRAWDA` = `FAŁSZ`). W przeciwnym wypadku otrzymalibyśmy `PRAWDĘ` (`FAŁSZ^PRAWDA` = `PRAWDA`).
 
 Zakładając, że sprawdzamy werset w którym nie występuje słowo `chełpliwi`, otrzymaliśmy `PRAWDĘ`.
 
@@ -559,7 +559,7 @@ Operator `|` zwróci `FAŁSZ` tylko dla przypadku, gdy obie ze stron będą `FA�
 
 Niezależnie czy werset zawiera słowo `chciwi` czy nie, werset zostanie zaliczony do wyników wyszukiwania, ponieważ po drugiej stronie otrzymaliśmy już `PRAWDĘ`.
 
-Możemy w tym momencie zauważyć, że jeśli werset posiada słowo `chciwi`, to werset zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: `PRAWDA|FAŁSZ` ostatecznym wynikiem będzie `PRAWDA`.
+Możemy w tym momencie zauważyć, że jeśli werset posiada słowo `chciwi`, to werset zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: `PRAWDA|FAŁSZ`, ostatecznie wynikiem będzie `PRAWDA`.
 
 Podsumowując, wzorzec ***chciwi|chełpliwi^samolubni&pyszni*** będzie wyszukiwał wersetów w których znajdują się jednocześnie słowa (`samolubni` oraz `pyszni`) albo znajduje się słowo `chełpliwi` (przy czym słowa `chełpliwi`, `samolubni` i `pyszni` nie mogą znaleźć się w jednym wersecie jednocześnie), jednakże do wyników wyszukiwania zaliczony zostanie każdy werset, który zawiera słowo `chciwi`, niezależnie od reszty wzorca.
 
@@ -601,7 +601,7 @@ FAŁSZ^PRAWDA
 
 Ostatnim operatorem jest `^`. W tym miejscu następuje ostateczna decyzja, czy zaliczyć obecny werset do wyników wyszukiwania. Operator `albo` zaliczy werset jeśli jedna albo druga strona jest `PRAWDĄ`. Tak jest w tym przypadku, a więc werset zostanie zaliczony do wyników wyszukiwania.
 
-Wzorzec ten, choć podobny do wzorca z **przykładu 1** - będzie poszukiwał innych wersetów czyli takich, w których wystąpi słowo `chciwi` lub `chełpliwi` przy czym nie wystąpią jednocześnie słowa `samolubni` oraz `pyszni`. Z drugiej strony pokaże wersety, w których występują słowa `samolubni` oraz `pyszni`, ale nie znajdą się tam słowa `chciwi` ani `chełpliwi`.
+Wzorzec ten, choć podobny do wzorca z **przykładu 1** - będzie poszukiwał innych wersetów czyli takich, w których wystąpi słowo `chciwi` lub `chełpliwi`, przy czym nie wystąpią jednocześnie słowa `samolubni` oraz `pyszni`. Z drugiej strony pokaże wersety, w których występują słowa `samolubni` oraz `pyszni`, ale nie znajdą się tam słowa `chciwi` ani `chełpliwi`.
 
 **Przykład 3**
 
@@ -611,7 +611,7 @@ W tym przykładzie użyty został operator `~` (negacji), a obok siebie znajduj�
 samolubni&~chciwi&pyszni
 ```
 
-Operator `~` jest usytuowany jako drugi w hierarchii priorytetów. Zostanie on sprawdzony jako pierwszy. Jest to operator jednoargumentowy, tzn. interesuje go tylko słowo/fraza/wynik z nawiasu bezpośrednio do niego przylegającego.
+Operator `~` jest usytuowany jako drugi w hierarchii priorytetów, więc w podanym przykładzie zostanie on sprawdzony jako pierwszy. Jest to operator jednoargumentowy, tzn. interesuje go tylko słowo/fraza/wynik z nawiasu bezpośrednio do niego przylegającego.
 
 ```
 ~chciwi
@@ -623,7 +623,7 @@ Werset zostanie sprawdzony pod kątem wystąpienia słowa `chciwi`. Jeżeli sło
 samolubni&PRAWDA&pyszni
 ```
 
-Dwa operatory `&` o tym samym priorytecie zostaną sprawdzane w kolejności w jakiej występują we wzorcu:
+Dwa operatory `&` (o tym samym priorytecie) zostaną sprawdzane w takiej kolejności w jakiej występują we wzorcu:
 
 ```
 samolubni&PRAWDA
