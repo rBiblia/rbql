@@ -34,6 +34,7 @@ rBible Query Language – Przewodnik
 ### [5.1. Dozwolone znaki w wyrazach](#51-dozwolone-znaki-w-wyrazach-1)
 ### [5.2. Więcej przykładów](#52-więcej-przykładów-1)
 ### [5.3. Rzadziej używane znaki na klawiaturze](#53-rzadziej-używane-znaki-na-klawiaturze-1)
+### [5.4. Stylowanie wzorców](#54-stylowanie-wzorców-1)
 
 ## [Autorzy](#autorzy-1)
 
@@ -316,6 +317,15 @@ Pan&Bóg
 
 W **Biblii warszawskiej** daje to 466 wyników.
 
+**Tablica prawdy:**
+
+| lewa strona | prawa strona | wynik  |
+|-------------|--------------|--------|
+| PRAWDA      | PRAWDA       | PRAWDA |
+| PRAWDA      | FAŁSZ        | FAŁSZ  |
+| FAŁSZ       | PRAWDA       | FAŁSZ  |
+| FAŁSZ       | FAŁSZ        | FAŁSZ  |
+
 2.2. Operator `lub`
 -------------------
 
@@ -345,6 +355,15 @@ Pan|Bóg
 
 W **Biblii warszawskiej** daje to 3959 wyników.
 
+**Tablica prawdy:**
+
+| lewa strona | prawa strona | wynik  |
+|-------------|--------------|--------|
+| PRAWDA      | PRAWDA       | PRAWDA |
+| PRAWDA      | FAŁSZ        | PRAWDA |
+| FAŁSZ       | PRAWDA       | PRAWDA |
+| FAŁSZ       | FAŁSZ        | FAŁSZ  |
+
 2.3. Operator `albo`
 --------------------
 
@@ -373,6 +392,15 @@ Pan^Bóg
 *(czyt. Pan albo Bóg)* – wyszuka wersety, w których występuje samo słowo `Pan` albo samo słowo `Bóg`, ale odrzuci te wersety w których słowa `Pan` i `Bóg` występują jednocześnie.
 
 W **Biblii warszawskiej** daje to 3493 wyników.
+
+**Tablica prawdy:**
+
+| lewa strona | prawa strona | wynik  |
+|-------------|--------------|--------|
+| PRAWDA      | PRAWDA       | FAŁSZ  |
+| PRAWDA      | FAŁSZ        | PRAWDA |
+| FAŁSZ       | PRAWDA       | PRAWDA |
+| FAŁSZ       | FAŁSZ        | FAŁSZ  |
 
 2.4. Nawiasy grupujące
 ----------------------
@@ -497,6 +525,13 @@ Pan&Bóg~
 **A wykluczymy wyraz:**
 
 - wieczny (jako całe jedno słowo)
+
+**Tablica prawdy:**
+
+| prawa strona | wynik  |
+|--------------|--------|
+| PRAWDA       | FAŁSZ  |
+| FAŁSZ        | PRAWDA |
 
 2.6. Priorytet operatorów
 -------------------------
@@ -844,6 +879,18 @@ Liczba nawiasów otwierających i zamykających nie jest równa, brakuje tutaj n
 - `^` – albo
 
 ![albo](/images/char_xor.png)
+
+5.4. Stylowanie wzorców
+-----------------------
+
+Im większy stopień skomplikowania wzorca, tym trudniej zachować jego czytelność. Podczas interpretowania wzorca pomijane są białe znaki takie jak:
+
+- tabulator
+- znak nowej linii
+
+Dzięki temu można poprawić czytelność zapisu, zachowując jednocześnie jego funkcjonalność.
+
+![stylowanie](/images/pattern_styling.png)
 
 Autorzy
 =======
