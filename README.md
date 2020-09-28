@@ -503,7 +503,7 @@ Pan&Bóg~
 
 W przypadku, gdy otrzymujemy nieporządane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.
 
-W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji, program rozumiał w jakiej kolejności należy rozpocząć analizowanie wzorca.
+W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.
 
 Poniższa lista przedstawia kolejność priorytetów operatorów (od najwyższego), która brana jest pod uwagę przy analizowaniu wzorca:
 
@@ -527,9 +527,9 @@ Jakich wyników możemy się spodziewać w przypadku powyższego wzorca? Od któ
 - *chełpliwi^samolubni* ?
 - *samolubni&pyszni* ?
 
-Odpowiedź poznajemy znając priorytet operatorów.
+Odpowiedź uzyskujemy znając priorytet operatorów.
 
-Najwyższy priorytet posiada oparator `&` (czyli `i`). Algorytm w pierwszej kolejnośći sprawdzi czy w wersecie znajdują się słowa `samolubni` i `pyszni`, wynikiem tej operacji będzie `PRAWDA` jeśli oba słowa znajdują się w wersecie, bądź `FAŁSZ` w każdym innym przypadku.
+Najwyższy priorytet w podanym przykładzie posiada oparator `&` (czyli `i`). Algorytm w pierwszej kolejnośći sprawdzi czy w wersecie znajdują się słowa `samolubni` i `pyszni`. Wynikiem operacji będzie `PRAWDA` jeśli oba słowa znajdują się w wersecie, bądź `FAŁSZ` w każdym innym przypadku.
 
 W kolejnym kroku program będzie posiadał już informację na temat wyniku operacji `&`, która będzie wykorzystana do dalszych działań. Przyjmując, że oba słowa `samolubni` i `pyszni` wystąpiły w aktualnie szukanym wersecie otrzymamy:
 
@@ -549,7 +549,7 @@ W tym przypadku wynikiem operatora `^` będzie `FAŁSZ`, jeśli słowo `chełpli
 
 Zakładając, że sprawdzamy werset w którym nie występuje słowo `chełpliwi`, otrzymaliśmy `PRAWDĘ`.
 
-W kolejnym kroku interpretacja wzorca wygląda już tak:
+Uwzględniając poprzednie wyniki, nasz wzorzec będzie wyglądał następująco:
 
 ```
 chciwi|PRAWDA
