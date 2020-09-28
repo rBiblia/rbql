@@ -19,6 +19,7 @@ rBible Query Language – Przewodnik
 ### [2.3. Operator `albo`](#23-operator-albo-1)
 ### [2.4. Nawiasy grupujące](#24-nawiasy-grupujące-1)
 ### [2.5. Operator `nie`](#25-operator-nie-1)
+### [2.6. Priorytet operatorów](#26-priorytet-operatorów-1)
 ### [Podsumowanie rozdziału II](#podsumowanie-rozdziału-ii-1)
 
 ## [III. Łączenie modyfikatorów i przełączników wraz z operatorami](#iii-łączenie-modyfikatorów-i-przełączników-wraz-z-operatorami-1)
@@ -497,6 +498,147 @@ Pan&Bóg~
 
 - wieczny (jako całe jedno słowo)
 
+2.6. Priorytet operatorów
+-------------------------
+
+W przypadku, gdy otrzymujemy nieporządane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.
+
+W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji, algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.
+
+Poniższa lista przedstawia kolejność priorytetów operatorów (od najwyższego), która brana jest pod uwagę przy analizowaniu wzorca:
+
+1. `()` - nawiasy
+2. `~` - negacja
+3. `&` - i
+4. `^` - albo
+5. `|` - lub
+
+**Przykład 1**
+
+```
+chciwi|chełpliwi^samolubni&pyszni
+```
+
+*(czyt. chciwi lub chełpliwi albo samolubni i pyszni)*
+
+Jakich wyników możemy się spodziewać w przypadku powyższego wzorca? Od której pary słów program ma rozpocząć sprawdzanie?
+
+- *chciwi|chełpliwi* ?
+- *chełpliwi^samolubni* ?
+- *samolubni&pyszni* ?
+
+Odpowiedź uzyskujemy znając priorytet operatorów.
+
+Najwyższy priorytet w podanym przykładzie posiada oparator `&` (czyli `i`). Algorytm w pierwszej kolejnośći sprawdzi czy w wersecie znajdują się słowa `samolubni` i `pyszni`. Wynikiem operacji będzie `PRAWDA` jeśli oba słowa znajdują się w wersecie, bądź `FAŁSZ` w każdym innym przypadku.
+
+W kolejnym kroku program będzie posiadał już informację na temat wyniku operacji `&`, która będzie wykorzystana do dalszych działań. Przyjmując, że oba słowa `samolubni` i `pyszni` wystąpiły w aktualnie szukanym wersecie otrzymamy:
+
+```
+chciwi|chełpliwi^PRAWDA
+```
+
+Kolejnym operatorem znajdującym się wyżej w hierarchii ważności jest operator `^` (`albo`). W kolejnym kroku do sprawdzenia zostanie wzięta druga para:
+
+```
+chełpliwi^PRAWDA
+```
+
+Wynikiem operatora `^` będzie `PRAWDA`, gdy jedna albo druga strona jest `PRAWDĄ`, lecz wynikiem będzie `FAŁSZ`, jeśli obie strony będą `PRAWDĄ` albo obie strony będą `FAŁSZEM`.
+
+W tym przypadku wynikiem operatora `^` będzie `FAŁSZ`, jeśli słowo `chełpliwi` znajduje się w wersecie (ponieważ `PRAWDA^PRAWDA` = `FAŁSZ`). W przeciwnym wypadku otrzymalibyśmy `PRAWDĘ` (`FAŁSZ^PRAWDA` = `PRAWDA`).
+
+Zakładając, że sprawdzamy werset w którym nie występuje słowo `chełpliwi`, otrzymaliśmy `PRAWDĘ`.
+
+Uwzględniając poprzednie wyniki, nasz wzorzec będzie wyglądał następująco:
+
+```
+chciwi|PRAWDA
+```
+
+Operator `|` zwróci `FAŁSZ` tylko dla przypadku, gdy obie ze stron będą `FAŁSZEM`, w przeciwnym wypadku otrzymamy `PRAWDĘ`.
+
+Niezależnie czy werset zawiera słowo `chciwi` czy nie, werset zostanie zaliczony do wyników wyszukiwania, ponieważ po drugiej stronie otrzymaliśmy już `PRAWDĘ`.
+
+Możemy w tym momencie zauważyć, że jeśli werset posiada słowo `chciwi`, to werset zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: `PRAWDA|FAŁSZ`, ostatecznie wynikiem będzie `PRAWDA`.
+
+Podsumowując, wzorzec ***chciwi|chełpliwi^samolubni&pyszni*** będzie wyszukiwał wersetów w których znajdują się jednocześnie słowa (`samolubni` oraz `pyszni`) albo znajduje się słowo `chełpliwi` (przy czym słowa `chełpliwi`, `samolubni` i `pyszni` nie mogą znaleźć się w jednym wersecie jednocześnie), jednakże do wyników wyszukiwania zaliczony zostanie każdy werset, który zawiera słowo `chciwi`, niezależnie od reszty wzorca.
+
+**Przykład 2**
+
+```
+(chciwi|chełpliwi)^samolubni&pyszni
+```
+
+Nawiasy zgrupowały pierwsze dwa wyrazy połączone operatorem `|`. Ponieważ nawiasy posiadają najwyższy priorytet, sprawdzenie wzorca w danym wersecie rozpocznie się właśnie od nich.
+
+```
+chciwi|chełpliwi
+```
+
+To wyrażenie zwróci `FAŁSZ` w przypadku, gdy żadne ze słów nie znajduje się w wersecie. Jeśli dowolny z nich się pojawi lub pojawią się wszystkie, wtedy otrzymamy `PRAWDĘ`.
+
+Zakładając, że sprawdzamy werset w którym nie występują oba słowa, otrzymamy `FAŁSZ`.
+
+Analiza wzorca wygląda następująco:
+
+```
+FAŁSZ^samolubni&pyszni
+```
+
+Pozostały już tylko **dwa** operatory do sprawdzenia. Operator `&` ma pierwszeństwo, więc to on zostanie sprawdzony jako pierwszy.
+
+```
+samolubni&pyszni
+```
+
+Werset musi posiadać oba słowa, aby wynikiem była `PRAWDA`. Zakładając, że tak się stanie, wynikiem tej operacji będzie `PRAWDA`.
+
+Otrzymaliśmy:
+
+```
+FAŁSZ^PRAWDA
+```
+
+Ostatnim operatorem jest `^`. W tym miejscu następuje ostateczna decyzja, czy zaliczyć obecny werset do wyników wyszukiwania. Operator `albo` zaliczy werset jeśli jedna albo druga strona jest `PRAWDĄ`. Tak jest w tym przypadku, a więc werset zostanie zaliczony do wyników wyszukiwania.
+
+Wzorzec ten, choć podobny do wzorca z **przykładu 1** - będzie poszukiwał innych wersetów czyli takich, w których wystąpi słowo `chciwi` lub `chełpliwi`, przy czym nie wystąpią jednocześnie słowa `samolubni` oraz `pyszni`. Z drugiej strony pokaże wersety, w których występują słowa `samolubni` oraz `pyszni`, ale nie znajdą się tam słowa `chciwi` ani `chełpliwi`.
+
+**Przykład 3**
+
+W tym przykładzie użyty został operator `~` (negacji), a obok siebie znajdują się operatory o takim samym priorytecie.
+
+```
+samolubni&~chciwi&pyszni
+```
+
+Operator `~` jest usytuowany jako drugi w hierarchii priorytetów, więc w podanym przykładzie zostanie on sprawdzony jako pierwszy. Jest to operator jednoargumentowy, tzn. interesuje go tylko słowo/fraza/wynik z nawiasu bezpośrednio do niego przylegającego.
+
+```
+~chciwi
+```
+
+Werset zostanie sprawdzony pod kątem wystąpienia słowa `chciwi`. Jeżeli słowo zostanie odnalezione to wynikiem operacji będzie `PRAWDA`. Operator `~` zamieni `PRAWDĘ` w `FAŁSZ` (i analogicznie `FAŁSZ` w `PRAWDĘ`). Zakładając, że słowo `chciwi` nie występuje w szukanym wersecie, zanegowany `FAŁSZ` da w rezultacie `PRAWDĘ` i ostatecznie otrzymamy:
+
+```
+samolubni&PRAWDA&pyszni
+```
+
+Dwa operatory `&` (o tym samym priorytecie) zostaną sprawdzane w takiej kolejności w jakiej występują we wzorcu:
+
+```
+samolubni&PRAWDA
+```
+
+Zakładając, że przeszukiwany werset zawiera słowo `samolubni` otrzymamy: `PRAWDA&PRAWDA`, co w wyniku da `PRAWDĘ`:
+
+```
+PRAWDA&pyszni
+```
+
+Od tego czy słowo `pyszni` znajduje się w wersecie czy nie, będzie miało decydujące znaczenie na znalezienie się tego wersetu w wynikach wyszukiwania, ponieważ dla operatora `&` tylko `PRAWDA&PRAWDA` może dać w wyniku `PRAWDĘ`.
+
+Wzorzec ten poszukuje wersetów, w których znajduje się słowo `samolubni` oraz `pyszni`, ale nie znajduje się słowo `chciwi`.
+
 Podsumowanie rozdziału II
 -------------------------
 
@@ -708,7 +850,7 @@ Autorzy
 
 - [Kacper Kość](https://github.com/jaspre) (implementacja rBQL, autor przewodnika)
 - [Rafał Toborek](https://github.com/clash82) (twórca rBiblii, korekty w przewodniku)
-- [Józef Kajfosz](https://www.docelu.biblia.info.pl) (pomysłodwaca i twórca programu *Effata*)
+- [Józef Kajfosz](https://www.docelu.biblia.info.pl) (pomysłodawca i twórca programu *Effata*)
 
 Strona domowa programu: [rbiblia.toborek.info](https://rbiblia.toborek.info)
 
