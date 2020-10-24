@@ -1,4 +1,4 @@
-rBible Query Language – Przewodnik
+﻿rBible Query Language – Przewodnik
 ==================================
 
 ## [Wstęp](#wstęp-1)
@@ -14,11 +14,11 @@ rBible Query Language – Przewodnik
 ### [Podsumowanie rozdziału I](#podsumowanie-rozdziału-i-1)
 
 ## [II. Operatory relacji](#ii-operatory-relacji-1)
-### [2.1. Operator `i`](#21-operator-i-1)
-### [2.2. Operator `lub`](#22-operator-lub-1)
-### [2.3. Operator `albo`](#23-operator-albo-1)
-### [2.4. Nawiasy grupujące](#24-nawiasy-grupujące-1)
-### [2.5. Operator `nie`](#25-operator-nie-1)
+### [2.1. Operator & (`i`)](#21-operator--i-1)
+### [2.2. Operator | (`lub`)](#22-operator--lub-1)
+### [2.3. Operator ^ (`albo`)](#23-operator--albo-1)
+### [2.4. Nawiasy grupujące ()](#24-nawiasy-grupujące--1)
+### [2.5. Operator ~ (`nie`)](#25-operator--nie-1)
 ### [2.6. Priorytet operatorów](#26-priorytet-operatorów-1)
 ### [Podsumowanie rozdziału II](#podsumowanie-rozdziału-ii-1)
 
@@ -41,9 +41,9 @@ rBible Query Language – Przewodnik
 Wstęp
 =====
 
-Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu **Effata**, który stworzony został przez [Józefa Kajfosza](https://www.docelu.biblia.info.pl) w latach '90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie **rBQL** (*rBible Query Language* – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:
+Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu **Effata**, który stworzony został przez [Józefa Kajfosza](https://www.docelu.biblia.info.pl) w latach `90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie **rBQL** (*rBible Query Language* – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:
 
-- *Rozdział I* omawia podstawową jednostkę wyszukiwania – atom (pojedyncze słowo) i jego możliwości rozbudowy.
+- *Rozdział I* omawia podstawową jednostkę wyszukiwania – atom (pojedyncze słowo) i możliwości jego rozbudowy.
 - *Rozdział II* omawia sposoby budowania relacji pomiędzy atomami za pomocą dozwolonych operatorów: `i`, `lub`, `albo`, `nie` oraz nawiasów.
 - *Rozdział III* przedstawia sposoby łączenia możliwości wyszukiwania z rozdziału I i II w bardziej skomplikowane wzorce.
 - *Rozdział IV* pokazuje funkcje dodatkowe, pomocne podczas przeszukiwania.
@@ -68,9 +68,9 @@ Na początek objaśnienie kilku terminów:
     * przełącznika wielkości liter (np. `słowo/i`)
     * modyfikatora przedrostka (np. `*słowo`)
     * modyfikatora przyrostka (np. `słowo*`)
-    * pytajnika, zastępującego jeden dowolny znak (np. `s?owo`)
+    * pytajnika zastępującego jeden dowolny znak (np. `s?owo`)
 
-Poszczególne elementy, z których zbudowane są wzorce będą kolejno omawiane w dalszej części.
+Poszczególne elementy, z których zbudowane są wzorce, będą kolejno omawiane poniżej.
 
 I. Podstawowe operacje
 ======================
@@ -78,7 +78,7 @@ I. Podstawowe operacje
 1.1. Wielkość liter
 -------------------
 
-Wyszukiwarka, bez wskazanego rozróżnienia, będzie poszukiwać słów stosując zadaną wielkość liter. Przykładowo przeszukując **Biblię warszawską** za pomocą słowa `bóg` otrzymamy 9 wyników.
+Wyszukiwarka automatycznie wyszukuje słowa, stosując zadaną wielkość liter. Przykładowo, wyszukując w **Biblii Warszawskiej** słowa `bÓg`, otrzymamy 9 wyników.
 
 Opisane zachowanie możemy zmienić za pomocą przełącznika `/i`.
 
@@ -86,9 +86,9 @@ Opisane zachowanie możemy zmienić za pomocą przełącznika `/i`.
 bóg/i
 ```
 
-***Pamiętaj: Przełączniki muszą wystąpić tuż za słowem/frazą, oznacza to, że pomiędzy wyrazem, a przełącznikiem nie może wystąpić spacja.***
+***Pamiętaj: przełączniki muszą wystąpić tuż za szukanym słowem/frazą. Oznacza to, że między wyrazem a przełącznikiem nie może wystąpić spacja.***
 
-Przełącznik `/i` jest ustawieniem przypisanym do słowa/frazy, oznacza to, że we wzorcu każde słowo/fraza posiada swój zestaw ustawień. A więc niektóre słowa/frazy będą wyszukiwane tak jak zostały wpisane natomiast inne – za pomocą przełącznika – bez względu na wielkość podanych liter.
+Przełącznik `/i` jest ustawieniem przypisanym do słowa/frazy – oznacza to, że we wzorcu każde słowo/fraza posiada swój zestaw ustawień. Niektóre słowa/frazy będą więc wyszukiwane tak, jak zostały wpisane, a inne (przy użyciu przełącznika) bez względu na wielkość podanych liter.
 
 *i – pochodzi z ang. [i]nsensitive – czyli niewrażliwy (na wielkość liter)*
 
@@ -98,7 +98,7 @@ Przełącznik `/i` jest ustawieniem przypisanym do słowa/frazy, oznacza to, że
 bóg/i
 ```
 
-Wyszukaj wersety w których występuje dokładnie słowo `bóg` [trzy literowe słowo `bóg`] nie zwracając uwagi na wielkość liter.
+Wyszukaj wersety, w których występuje dokładnie słowo `bÓg` [trzyliterowe słowo `bÓg`], nie zwracając uwagi na wielkość liter.
 
 Otrzymane wyniki uwzględnią wersety z następującymi wyrazami:
 
@@ -110,7 +110,7 @@ Otrzymane wyniki uwzględnią wersety z następującymi wyrazami:
 - bÓG
 - BÓG
 
-Dzięki czemu dla **Biblii warszawskiej** otrzymamy już 1198 wyników.
+Dzięki czemu dla **Biblii Warszawskiej** otrzymamy już 1198 wyników.
 
 **Niepoprawny wzorzec:**
 
@@ -118,16 +118,16 @@ Dzięki czemu dla **Biblii warszawskiej** otrzymamy już 1198 wyników.
 bóg /i
 ```
 
-Taki wzorzec jest niepoprawny i zostanie odrzucony przez program, ponieważ przełącznik nie znajduje się zaraz za wyrazem/frazą, ale istnieje między nimi spacja.
+Taki wzorzec jest niepoprawny i zostanie odrzucony przez program, ponieważ przełącznik nie znajduje się zaraz za wyrazem/frazą, ale jest między nimi spacja.
 
 *Obecnie w rBiblii występuje tylko jeden przełącznik, ale w przyszłości może pojawić się ich więcej.*
 
 1.2. Przedrostek
 ----------------
 
-*Przedrostek czyli z łacińskiego `przymocowany na przedzie`.*
+*Przedrostek, czyli z łacińskiego `przymocowany na przedzie`.*
 
-Czasami chcemy znaleźć wersety które zawierają ten sam wyraz, ale w odmienionej formie. Np. chcemy znaleźć słowo `wieczny`, ale także `przed-wieczny`, `od-wieczny`.
+Czasami chcemy znaleźć wersety, które zawierają ten sam wyraz, ale w odmienionej formie. Np. chcemy znaleźć słowo `wieczny`, ale także `przed-wieczny`, `od-wieczny`.
 
 W tym celu możemy skorzystać z modyfikatora przedrostków – jego symbolem jest gwiazdka umieszczona tuż przed ciągiem.
 
@@ -137,7 +137,7 @@ W tym celu możemy skorzystać z modyfikatora przedrostków – jego symbolem je
 *wieczny
 ```
 
-Gwiazdka w tym miejscu oznacza: wyszukaj wersety w których znajdziesz słowa kończące się na `wieczny`, ale pozwól, żeby to słowo rozpoczynało się dowolnymi innymi znakami.
+Gwiazdka w tym miejscu oznacza: wyszukaj wersety, w których znajdziesz słowa kończące się na `wieczny`, ale pozwól, by to słowo rozpoczynało się dowolnymi innymi znakami.
 
 **Niepoprawny wzorzec:**
 
@@ -145,23 +145,23 @@ Gwiazdka w tym miejscu oznacza: wyszukaj wersety w których znajdziesz słowa ko
 * wieczny
 ```
 
-Jest on niepoprawny, ponieważ między modyfikatorem, a wyrazem występuje spacja.
+Jest on niepoprawny, ponieważ między modyfikatorem a wyrazem występuje spacja.
 
-* samo słowo `wieczny` - daje 30 wyników w **Biblii warszawskiej**
-* słowo `*wieczny` - daje 31 wyników (1 werset zawiera słowo `odwieczny`)
+* Samo słowo `wieczny` daje 30 wyników w **Biblii Warszawskiej**
+* Słowo `*wieczny` daje 31 wyników (1 werset zawiera słowo `odwieczny`)
 
-***Pamiętaj: modyfikator przedrostka uwzględnia sam trzon jako trafiony werset, tzn, że w przypadku wzorca `*wieczny`, werset który zawiera dokładnie słowo `wieczny` będzie uwzględniony w wynikach wyszukiwania oraz wersety, które zawierają słowa kończące się na `wieczny`, czyli `odwieczny`, `przedwieczny` itp.***
+***Pamiętaj: modyfikator przedrostka uwzględnia również trafienia zawierające sam trzon. To znaczy, że w wynikach wyszukiwania dla wzorca `*wieczny` będą zarówno wersety zawierające dokładnie słowo `wieczny` i takie, które zawierają słowa kończące się na `wieczny`, czyli `odwieczny`, `przedwieczny` itp.***
 
 1.3. Przyrostek
 ---------------
 
 *Przyrostek czyli `dołączony` z j. łacińskiego.*
 
-Czasami potrzebne jest wyszukanie wersetów zawierające szukane słowa, biorąc pod uwagę jego odmiany/końcówki.
+Czasami potrzebne jest wyszukanie wersetów biorące pod uwagę odmiany/końcówki szukanych słów.
 
-Załóżmy, że chcemy wyszukać słowa: `Bogu`, `Boga`, `Bogiem`
+Załóżmy, że chcemy wyszukać słowa: `Bogu`, `Boga`, `Bogiem`.
 
-Aby utworzyć działający wzorzec, należy przyjrzeć się odmianom i spróbować znaleźć wspólny trzon – w tym przypadku trzonem będzie `Bog`, a następnie dodać modyfikator przyrostków, czyli gwiazdkę umieszczoną zaraz po wyrazie.
+Aby utworzyć działający wzorzec, należy przyjrzeć się odmianom i spróbować znaleźć wspólny trzon (w tym przypadku trzonem będzie `Bog`), a następnie dodać modyfikator przyrostków, czyli gwiazdkę umieszczoną zaraz po wyrazie.
 
 **Poprawny wzorzec:**
 
@@ -169,7 +169,7 @@ Aby utworzyć działający wzorzec, należy przyjrzeć się odmianom i spróbowa
 Bog*
 ```
 
-Taki wzorzec wyszuka wersety w których występuje słowo zaczynające się od `Bog` oraz kończące się na dowolnym zestawie znaków, np:
+Taki wzorzec wyszuka wersety, w których występuje słowo zaczynające się od `Bog` oraz kończące się na dowolnym zestawie znaków, np:
 
 - Bog
 - Bogowie
@@ -188,14 +188,14 @@ Wszystkie wersety spełniające to kryterium zostaną zaliczone do wyników wysz
 Bog *
 ```
 
-Taki wzorzec jest niepoprawny, ponieważ pomiędzy gwiazdką, a słowem występuje spacja.
+Taki wzorzec jest niepoprawny, ponieważ pomiędzy gwiazdką a słowem występuje spacja.
 
-***Pamiętaj: modyfikator przyrostka uwzględnia także sam trzon jako trafiony werset, tzn, że w przypadku wzorca `Bog*`, werset który zawierałby samo słowo `Bog` będzie uwzględniony w wynikach wyszukiwania.***
+***Pamiętaj: przy użyciu modyfikatora przyrostka także sam trzon jest liczony jako trafienie. W przypadku wzorca `Bog*` werset zawierający samo słowo `Bog` byłby uwzględniony w wynikach wyszukiwania.***
 
 1.4. Łączenie modyfikatorów i przełączników
 -------------------------------------------
 
-Trzy poprzednie opisy pokazywały dodatkowe opcje, za pomocą których możemy rozszerzyć możliwości wyszukiwania słowa/fraz, tj. **przedrostek**, **przyrostek** oraz wyszukiwanie z pominięciem **wielkości liter**.
+Trzy poprzednie opisy pokazywały dodatkowe opcje, za pomocą których możemy rozszerzyć możliwości wyszukiwania słów/fraz, tj. **przedrostek**, **przyrostek** oraz wyszukiwanie z pominięciem **wielkości liter**.
 
 Teraz dowiesz się, że elementy te można ze sobą łączyć.
 
@@ -215,7 +215,7 @@ Taki wzorzec będzie poszukiwał wersetów w których znajdzie:
 - wieczny
 - wiecznemu itd.
 
-Innymi słowy – będzie poszukiwał wersetów w których znajduje się wyraz składający się z ciągu `wieczn`, czyli ciąg `wieczn` musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania.
+Innymi słowy – program będzie poszukiwał wersetów, w których znajduje się wyraz składający się z ciągu `wieczn`, czyli ciąg `wieczn` musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania.
 
 ```
 *zmienn*/i
@@ -233,7 +233,7 @@ Taki wzorzec będzie poszukiwał wersetów w których znajdzie:
 - zmienny
 - Zmienna itd.
 
-Innymi słowy – będzie poszukiwał wersetów w których znajdzie wyraz składający się z ciągu `zmienn` nie zważając na wielkość liter. Ciąg `zmienn` musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania, nieważne czy dużą czy małą literą.
+Innymi słowy – program będzie poszukiwał wersetów, w których znajdzie wyraz składający się z ciągu `zmienn`, nie zważając na wielkość liter. Ciąg `zmienn` musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania – nieważne czy pisany dużą, czy małą literą.
 
 1.5. Fraza
 ----------
@@ -244,9 +244,9 @@ Frazy są to dwa (lub więcej) słowa oddzielone spacją. Program będzie poszuk
 Jan Chrzciciel
 ```
 
-Taki wzorzec będzie poszukiwał wersetów w których słowo `Chrzciciel` występuje zaraz po słowie `Jan` z dokładnie jedną spacją pomiędzy nimi.
+Taki wzorzec będzie poszukiwał wersetów, w których słowo `Chrzciciel` występuje zaraz po słowie `Jan` z dokładnie jedną spacją pomiędzy nimi.
 
-**W Biblii warszawskiej** daje to 6 wyników.
+**W Biblii Warszawskiej** daje to 6 wyników.
 
 Poszczególne słowa można uzupełniać o przedrostki i przyrostki:
 
@@ -254,13 +254,13 @@ Poszczególne słowa można uzupełniać o przedrostki i przyrostki:
 Jan* Chrzciciel*
 ```
 
-Odnajdzie wersety w kótrych występuje:
+Odnajdzie wersety, w których występuje:
 
 - Jan Chrzciciel
 - Janowi Chrzcicielowi
 - Janem Chrzcicielem itp.
 
-***Pamiętaj: przełącznik wielkości liter (`/i`) ma zastosowanie do całej frazy. Oznacza to, że w przypadku frazy `Jan Chrzciciel`, nie można zastosować `Jan/i Chrzciciel`, aby słowo `Jan` było wyszukiwane niezależnie od wielkości liter, natomiast słowo `Chrzciciel` tak jak zostało podane.***
+***Pamiętaj: przełącznik wielkości liter (`/i`) ma zastosowanie do całej frazy. Oznacza to, że w przypadku frazy `Jan Chrzciciel` nie można zastosować `Jan/i Chrzciciel`, aby słowo `Jan` było wyszukiwane niezależnie od wielkości liter, a słowo `Chrzciciel` tak, jak zostało podane.***
 
 Modyfikator wielkości liter może wystąpić tylko na końcu frazy:
 
@@ -268,28 +268,28 @@ Modyfikator wielkości liter może wystąpić tylko na końcu frazy:
 Jan Chrzciciel/i
 ```
 
-Wyszuka frazę `Jan Chrzciciel` nie zważając czy będzie składać się z wielkich czy małych liter, czyli np. `Jan chrzciciel` także zostanie zaliczony.
+Wyszuka frazę `Jan Chrzciciel`, nie zważając, czy będzie składać się z wielkich czy małych liter, czyli np. `Jan chrzciciel` także zostanie zaliczony.
 
 Podsumowanie rozdziału I
 ------------------------
 
 W pierwszym rozdziale poznaliśmy podstawową jednostkę wyszukiwania, jaką jest *słowo*. Następnie nauczyliśmy się, że *słowo* można uzupełniać o dodatkowe opcje, które mają wpływ na wyniki wyszukiwania. Należą do nich:
 
-- wyszukiwanie nie zwracające uwagi na wielkość liter (`słowo/i`)
-- przedrostki (`*słowo`)
-- przyrostki (`słowo*`)
-- frazy (`słowo1 słowo2`)
-- kombinacje powyższych (`słowo* *słowo/i`)
+- wyszukiwanie niezwracające uwagi na wielkość liter (`słowo/i`),
+- przedrostki (`*słowo`),
+- przyrostki (`słowo*`),
+- frazy (`słowo1 słowo2`),
+- kombinacje powyższych (`słowo* *słowo/i`).
 
-Umiejętne stosowanie wyżej wymienionych kombinacji przyczyni się do otrzymywania trafniejszych wyników.
+Umiejętne stosowanie tych kombinacji przyczyni się do otrzymywania trafniejszych wyników.
 
 II. Operatory relacji
 =====================
 
-W tej części przyjrzymy się w jaki sposób można łączyć ze sobą słowa. Poznamy kilka operatorów, które służą do budowania relacji między atomami. Ich umiejętne użycie, może w rezultacie dać ciekawe studium wybranego tematu. Każdy z operatorów posiada specjalny symbol, który jest wprowadzany za pomocą klawiatury. Umiejscowienie znaków specjalnych na klawiaturze zostało przedstawione w dodatku na końcu tego przewodnika.
+W tej części przyjrzymy się, w jaki sposób można łączyć ze sobą słowa. Poznamy kilka operatorów, które służą do budowania relacji między atomami. Ich umiejętne użycie może w rezultacie dać ciekawe studium wybranego tematu. Każdy z operatorów posiada specjalny symbol wprowadzany za pomocą klawiatury. Umiejscowienie znaków specjalnych na klawiaturze zostało przedstawione w dodatku na końcu tego przewodnika.
 
-2.1. Operator `i`
------------------
+2.1. Operator & (`i`)
+---------------------
 
 **Symbol:**
 
@@ -299,7 +299,7 @@ W tej części przyjrzymy się w jaki sposób można łączyć ze sobą słowa. 
 
 **Opis działania:**
 
-Werset zostanie uwzględniony w wynikach wyszukiwania, jeżeli oba słowa/frazy znajdujące się po lewej i prawej operatora `&` występują w wersecie.
+Program wyszuka wersety, w których występują zarówno słowa/frazy z lewej i prawej strony operatora `&`.
 
 **Miejsce na klawiaturze:**
 
@@ -313,9 +313,9 @@ Shift + 7
 Pan&Bóg
 ```
 
-*(czyt. Pan i Bóg)* – wyszuka wersety, w których występuje zarówno słowo `Pan` jak również `Bóg`.
+*(czyt. Pan i Bóg)* – wyszuka wersety, w których występują zarówno słowa `Pan` i `Bóg`.
 
-W **Biblii warszawskiej** daje to 466 wyników.
+W **Biblii Warszawskiej** daje to 466 wyników.
 
 **Tablica prawdy:**
 
@@ -326,8 +326,8 @@ W **Biblii warszawskiej** daje to 466 wyników.
 | FAŁSZ       | PRAWDA       | FAŁSZ  |
 | FAŁSZ       | FAŁSZ        | FAŁSZ  |
 
-2.2. Operator `lub`
--------------------
+2.2. Operator | (`lub`)
+-----------------------
 
 **Symbol:**
 
@@ -337,7 +337,7 @@ W **Biblii warszawskiej** daje to 466 wyników.
 
 **Opis działania:**
 
-Werset zostanie uwzględniony w wynikach wyszukiwania, jeżeli którykolwiek lub obydwa ze słów/fraz znajdujący się po lewej bądź prawej operatora `|` występują w wersecie.
+Program wyszuka wersety, w których występują jedno lub obydwa ze słów/fraz po lewej i prawej operatora `|`.
 
 **Miejsce na klawiaturze:**
 
@@ -351,9 +351,9 @@ Shift + \
 Pan|Bóg
 ```
 
-*(czyt. Pan lub Bóg)* – wyszuka wersety, w których występuje słowo `Pan` lub `Bóg` lub `Pan` i `Bóg` naraz.
+*(czyt. Pan lub Bóg)* – wyszuka wersety, w których występuje (a) tylko słowo `Pan` albo `Bóg` lub (b) obydwa słowa `Pan` i `Bóg` naraz.
 
-W **Biblii warszawskiej** daje to 3959 wyników.
+W **Biblii Warszawskiej** daje to 3959 wyników.
 
 **Tablica prawdy:**
 
@@ -364,8 +364,8 @@ W **Biblii warszawskiej** daje to 3959 wyników.
 | FAŁSZ       | PRAWDA       | PRAWDA |
 | FAŁSZ       | FAŁSZ        | FAŁSZ  |
 
-2.3. Operator `albo`
---------------------
+2.3. Operator ^ (`albo`)
+------------------------
 
 **Symbol:**
 
@@ -375,7 +375,7 @@ W **Biblii warszawskiej** daje to 3959 wyników.
 
 **Opis działania:**
 
-Werset zostanie uwzględniony w wynikach wyszukiwania, jeżeli jedno albo drugie słowo/fraza znajdujące się po lewej bądź prawej operatora `^` występują w wersecie.
+Program wyszuka wersety, w których występuje tylko jedno ze słów/fraz z lewej bądź prawej strony operatora `^`.
 
 **Miejsce na klawiaturze:**
 
@@ -391,7 +391,7 @@ Pan^Bóg
 
 *(czyt. Pan albo Bóg)* – wyszuka wersety, w których występuje samo słowo `Pan` albo samo słowo `Bóg`, ale odrzuci te wersety w których słowa `Pan` i `Bóg` występują jednocześnie.
 
-W **Biblii warszawskiej** daje to 3493 wyników.
+W **Biblii Warszawskiej** daje to 3493 wyników.
 
 **Tablica prawdy:**
 
@@ -402,8 +402,8 @@ W **Biblii warszawskiej** daje to 3493 wyników.
 | FAŁSZ       | PRAWDA       | PRAWDA |
 | FAŁSZ       | FAŁSZ        | FAŁSZ  |
 
-2.4. Nawiasy grupujące
-----------------------
+2.4. Nawiasy grupujące ()
+-------------------------
 
 **Symbol:**
 
@@ -428,9 +428,9 @@ Shift + 0
 (Bóg^Jezus)&Duch
 ```
 
-*(czyt. (Bóg albo Jezus) i Duch)* – wyszukaj wersety w których `Bóg` jest razem z `Duch` albo `Jezus` jest razem z `Duch` przy `Bóg`, `Jezus` i `Duch` nie może wystąpić jednocześnie.
+*(czyt. (Bóg albo Jezus) i Duch)* – wyszukaj wersety, w których `Bóg` jest razem z `Duch` albo `Jezus` jest razem z `Duch`, przy czym `Bóg` i `Jezus` nie mogą wystąpić jednocześnie.
 
-Taka konfiguracja daje 6 znalezionych wyników w **Biblii warszawskiej**.
+Taka konfiguracja daje 6 znalezionych wyników w **Biblii Warszawskiej**.
 
 **Niepoprawne wzorce nawiasów:**
 
@@ -438,16 +438,16 @@ Taka konfiguracja daje 6 znalezionych wyników w **Biblii warszawskiej**.
 ((Bóg^Jezus)&Duch
 ```
 
-We wzorcu znajdują się dwa nawiasy otwierające, natomiast tylko jeden nawias zamykający.
+We wzorcu są dwa nawiasy otwierające, ale tylko jeden nawias zamykający.
 
 ```
 (Bóg^Jezus))&Duch
 ```
 
-We wzorcu znajdują się dwa nawiasy zamykające, natomiast tylko jeden nawias otwierający.
+We wzorcu są dwa nawiasy zamykające, ale tylko jeden nawias otwierający.
 
-2.5. Operator `nie`
--------------------
+2.5. Operator ~ (`nie`)
+-----------------------
 
 **Symbol:**
 
@@ -457,7 +457,7 @@ We wzorcu znajdują się dwa nawiasy zamykające, natomiast tylko jeden nawias o
 
 **Opis działania:**
 
-Werset nie zostanie zaliczony do wyników wyszukiwania, jeśli znajduje się w nim zanegowane słowo/fraza.
+Program ograniczy wyniki wyszukiwania do wersetów, w których nie występuje zanegowane słowo/fraza.
 
 **Miejsce na klawiaturze:**
 
@@ -475,23 +475,23 @@ Operator negacji występuje zawsze przed słowem/frazą lub nawiasem otwierając
 
 *(czyt. nie Pan i Bóg)* – wyszuka wszystkie wersety, które zawierają słowo `Bóg` oraz jednocześnie nie zawierają słowa `Pan`.
 
-727 wyników w **Biblii warszawskiej**.
+727 wyników w **Biblii Warszawskiej**.
 
 ```
 Pan&~Bóg
 ```
 
-*(czyt. Pan i nie Bóg)* – znajdzie wersety w których znajduje się `Pan`, ale nie `Bóg`.
+*(czyt. Pan i nie Bóg)* – znajdzie wersety, w których znajduje się `Pan`, ale nie `Bóg`.
 
-2766 wyników dla **Biblii warszawskiej**.
+2766 wyników dla **Biblii Warszawskiej**.
 
 ```
 ~(Pan&Bóg)
 ```
 
-*(czyt. nie Pan i Bóg)* – znajdzie wszystkie wersety w których wyrazy `Pan` i `Bóg` nie występują jednocześnie.
+*(czyt. nie Pan i Bóg)* – znajdzie wszystkie wersety, w których wyrazy `Pan` i `Bóg` nie występują jednocześnie.
 
-30697 wyników dla **Biblii warszawskiej**.
+30697 wyników dla **Biblii Warszawskiej**.
 
 **Przykłady niepoprawnych wzorców:**
 
@@ -499,23 +499,23 @@ Pan&~Bóg
 Pan~&Bóg
 ```
 
-*(Pan nie i Bóg)* – ponieważ operator negacji, nie może występować, przed innym operatorem.
+*(Pan nie i Bóg)* – operator negacji nie może występować przed innym operatorem.
 
 ```
 Pan&Bóg~
 ```
 
-*(Pan i Bóg nie)* – ponieważ operator negacji, nie może występować jako koniec słowa.
+*(Pan i Bóg nie)* – ponieważ operator negacji nie może występować jako koniec słowa.
 
-***Pamiętaj: choć nie ma to większego sensu, dozwolone jest stosowanie większej ilości negacji. Parzysta ilość negacji da wynik, jakby jej nie było (negacja negacji daje powrót do początku), natomiast nieparzysta liczba negacji, da ten sam rezultat co pojedyńcza negacja.***
+***Pamiętaj: choć nie ma to większego sensu, dozwolone jest stosowanie większej liczby negacji. Parzysta liczba negacji da wynik, jakby jej nie było (negacja negacji daje powrót do początku), natomiast nieparzysta liczba negacji da ten sam rezultat, co pojedyncza negacja.***
 
-***Modyfikator przedrostka, przyrostka nie wyklucza trzonu w wynikach wyszukiwań – tzn. dla wzorca `*wieczny` – trzon to wieczny, więc wersety które zawierają dokładne słowo `wieczny` są uwzględnione w wynikach wyszukiwania. Jeśli chcielibyśmy otrzymać wersety zawierające tylko i wyłącznie słowo z jakimkolwiek przedrostkiem, wykluczając wersety, które zawierają sam trzon (np. `wieczny`), możemy użyć wzorca operatora negacji:***
+***Modyfikator przedrostka/przyrostka nie wyklucza trzonu w wynikach wyszukiwań. Na przykład, dla wzorca `*wieczny` trzon to `wieczny`, więc wersety, które zawierają dokładne słowo `wieczny`, będą uwzględnione w wynikach wyszukiwania. Jeśli chcielibyśmy wyszukać wersety zawierające tylko i wyłącznie słowo z jakimkolwiek przedrostkiem, wykluczając wersety, które zawierają sam trzon (np. `wieczny`), możemy użyć wzorca operatora negacji:***
 
 ```
 *wieczny&~wieczny
 ```
 
-***Wyszukaj wersety w których słowo `wieczny` poprzedzone jest jakimś przedrostkiem, ale wyklucz takie wersety, w których występuje tylko słowo `wieczny`.***
+***Wyszukaj wersety, w których słowo `wieczny` poprzedzone jest jakimś przedrostkiem, ale wyklucz takie wersety, w których występuje tylko słowo `wieczny`.***
 
 **Dzięki temu uwzględnimy wyrazy:**
 
@@ -536,7 +536,7 @@ Pan&Bóg~
 2.6. Priorytet operatorów
 -------------------------
 
-W przypadku, gdy otrzymujemy nieporządane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.
+W przypadku gdy otrzymujemy niepożądane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.
 
 W poprzednim rozdziale opisano operatory `i`, `albo`, `lub`, `nie` oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji, algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.
 
@@ -562,11 +562,11 @@ Jakich wyników możemy się spodziewać w przypadku powyższego wzorca? Od któ
 - *chełpliwi^samolubni* ?
 - *samolubni&pyszni* ?
 
-Odpowiedź uzyskujemy znając priorytet operatorów.
+Odpowiedź uzyskujemy, znając priorytet operatorów.
 
-Najwyższy priorytet w podanym przykładzie posiada oparator `&` (czyli `i`). Algorytm w pierwszej kolejnośći sprawdzi czy w wersecie znajdują się słowa `samolubni` i `pyszni`. Wynikiem operacji będzie `PRAWDA` jeśli oba słowa znajdują się w wersecie, bądź `FAŁSZ` w każdym innym przypadku.
+Najwyższy priorytet w podanym przykładzie posiada operator `&` (czyli `i`). Algorytm w pierwszej kolejności sprawdzi czy w wersecie znajdują się słowa `samolubni` i `pyszni`. Wynikiem operacji będzie `PRAWDA`, jeśli oba słowa znajdują się w wersecie, bądź `FAŁSZ` w każdym innym przypadku.
 
-W kolejnym kroku program będzie posiadał już informację na temat wyniku operacji `&`, która będzie wykorzystana do dalszych działań. Przyjmując, że oba słowa `samolubni` i `pyszni` wystąpiły w aktualnie szukanym wersecie otrzymamy:
+W kolejnym kroku program będzie posiadał już informację na temat wyniku operacji `&`, która będzie wykorzystana do dalszych działań. Przyjmując, że oba słowa `samolubni` i `pyszni` wystąpiły w aktualnie szukanym wersecie, otrzymamy:
 
 ```
 chciwi|chełpliwi^PRAWDA
@@ -590,13 +590,13 @@ Uwzględniając poprzednie wyniki, nasz wzorzec będzie wyglądał następująco
 chciwi|PRAWDA
 ```
 
-Operator `|` zwróci `FAŁSZ` tylko dla przypadku, gdy obie ze stron będą `FAŁSZEM`, w przeciwnym wypadku otrzymamy `PRAWDĘ`.
+Operator `|` zwróci `FAŁSZ`, tylko gdy obie ze stron będą `FAŁSZEM`, w przeciwnym wypadku otrzymamy `PRAWDĘ`.
 
-Niezależnie czy werset zawiera słowo `chciwi` czy nie, werset zostanie zaliczony do wyników wyszukiwania, ponieważ po drugiej stronie otrzymaliśmy już `PRAWDĘ`.
+Niezależnie czy werset zawiera słowo `chciwi`, czy nie, werset zostanie zaliczony do wyników wyszukiwania, ponieważ po drugiej stronie otrzymaliśmy już `PRAWDĘ`.
 
-Możemy w tym momencie zauważyć, że jeśli werset posiada słowo `chciwi`, to werset zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: `PRAWDA|FAŁSZ`, ostatecznie wynikiem będzie `PRAWDA`.
+Możemy w tym momencie zauważyć, że jeśli werset posiada słowo `chciwi`, to zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: `PRAWDA|FAŁSZ`, ostatecznie wynikiem będzie `PRAWDA`.
 
-Podsumowując, wzorzec ***chciwi|chełpliwi^samolubni&pyszni*** będzie wyszukiwał wersetów w których znajdują się jednocześnie słowa (`samolubni` oraz `pyszni`) albo znajduje się słowo `chełpliwi` (przy czym słowa `chełpliwi`, `samolubni` i `pyszni` nie mogą znaleźć się w jednym wersecie jednocześnie), jednakże do wyników wyszukiwania zaliczony zostanie każdy werset, który zawiera słowo `chciwi`, niezależnie od reszty wzorca.
+Podsumowując, wzorzec ***chciwi|chełpliwi^samolubni&pyszni*** będzie wyszukiwał wersetów, w których znajdują się jednocześnie słowa (`samolubni` oraz `pyszni`) albo znajduje się słowo `chełpliwi` (przy czym słowa `chełpliwi`/`samolubni` i `pyszni` nie mogą znaleźć się w jednym wersecie jednocześnie). Do wyników wyszukiwania zaliczony zostanie też każdy werset, który zawiera słowo `chciwi` niezależnie od reszty wzorca.
 
 **Przykład 2**
 
@@ -610,9 +610,9 @@ Nawiasy zgrupowały pierwsze dwa wyrazy połączone operatorem `|`. Ponieważ na
 chciwi|chełpliwi
 ```
 
-To wyrażenie zwróci `FAŁSZ` w przypadku, gdy żadne ze słów nie znajduje się w wersecie. Jeśli dowolny z nich się pojawi lub pojawią się wszystkie, wtedy otrzymamy `PRAWDĘ`.
+To wyrażenie zwróci `FAŁSZ`, gdy żadne ze słów nie znajduje się w wersecie. Jeśli pojawi się jedno lub oba, wtedy otrzymamy `PRAWDĘ`.
 
-Zakładając, że sprawdzamy werset w którym nie występują oba słowa, otrzymamy `FAŁSZ`.
+Zakładając, że sprawdzamy werset, w którym nie występuje żadne ze słów, otrzymamy `FAŁSZ`.
 
 Analiza wzorca wygląda następująco:
 
@@ -634,9 +634,9 @@ Otrzymaliśmy:
 FAŁSZ^PRAWDA
 ```
 
-Ostatnim operatorem jest `^`. W tym miejscu następuje ostateczna decyzja, czy zaliczyć obecny werset do wyników wyszukiwania. Operator `albo` zaliczy werset jeśli jedna albo druga strona jest `PRAWDĄ`. Tak jest w tym przypadku, a więc werset zostanie zaliczony do wyników wyszukiwania.
+Ostatnim operatorem jest `^`. W tym miejscu następuje ostateczna decyzja, czy zaliczyć obecny werset do wyników wyszukiwania. Operator `albo` zaliczy werset, jeśli jedna albo druga strona jest `PRAWDĄ`. Tak jest w tym przypadku, a więc werset zostanie zaliczony do wyników wyszukiwania.
 
-Wzorzec ten, choć podobny do wzorca z **przykładu 1** - będzie poszukiwał innych wersetów czyli takich, w których wystąpi słowo `chciwi` lub `chełpliwi`, przy czym nie wystąpią jednocześnie słowa `samolubni` oraz `pyszni`. Z drugiej strony pokaże wersety, w których występują słowa `samolubni` oraz `pyszni`, ale nie znajdą się tam słowa `chciwi` ani `chełpliwi`.
+Wzorzec ten, choć podobny do wzorca z **przykładu 1**, będzie poszukiwał innych wersetów - czyli takich, w których wystąpi słowo `chciwi` lub `chełpliwi`, przy czym nie wystąpią jednocześnie słowa `samolubni` oraz `pyszni`. Z drugiej strony pokaże wersety, w których występują słowa `samolubni` oraz `pyszni`, ale nie znajdą się tam słowa `chciwi` ani `chełpliwi`.
 
 **Przykład 3**
 
@@ -652,27 +652,27 @@ Operator `~` jest usytuowany jako drugi w hierarchii priorytetów, więc w podan
 ~chciwi
 ```
 
-Werset zostanie sprawdzony pod kątem wystąpienia słowa `chciwi`. Jeżeli słowo zostanie odnalezione to wynikiem operacji będzie `PRAWDA`. Operator `~` zamieni `PRAWDĘ` w `FAŁSZ` (i analogicznie `FAŁSZ` w `PRAWDĘ`). Zakładając, że słowo `chciwi` nie występuje w szukanym wersecie, zanegowany `FAŁSZ` da w rezultacie `PRAWDĘ` i ostatecznie otrzymamy:
+Werset zostanie sprawdzony pod kątem wystąpienia słowa `chciwi`. Jeżeli słowo zostanie odnalezione, wynikiem operacji będzie `PRAWDA`. Operator `~` zamieni `PRAWDĘ` w `FAŁSZ` (i analogicznie `FAŁSZ` w `PRAWDĘ`). Zakładając, że słowo `chciwi` nie występuje w szukanym wersecie, zanegowany `FAŁSZ` da w rezultacie `PRAWDĘ` i ostatecznie otrzymamy:
 
 ```
 samolubni&PRAWDA&pyszni
 ```
 
-Dwa operatory `&` (o tym samym priorytecie) zostaną sprawdzane w takiej kolejności w jakiej występują we wzorcu:
+Dwa operatory `&` (o tym samym priorytecie) zostaną sprawdzane w takiej kolejności, w jakiej występują we wzorcu:
 
 ```
 samolubni&PRAWDA
 ```
 
-Zakładając, że przeszukiwany werset zawiera słowo `samolubni` otrzymamy: `PRAWDA&PRAWDA`, co w wyniku da `PRAWDĘ`:
+Zakładając, że przeszukiwany werset zawiera słowo `samolubni`, otrzymamy: `PRAWDA&PRAWDA` - co w wyniku da `PRAWDĘ`:
 
 ```
 PRAWDA&pyszni
 ```
 
-Od tego czy słowo `pyszni` znajduje się w wersecie czy nie, będzie miało decydujące znaczenie na znalezienie się tego wersetu w wynikach wyszukiwania, ponieważ dla operatora `&` tylko `PRAWDA&PRAWDA` może dać w wyniku `PRAWDĘ`.
+To czy słowo `pyszni` znajduje się w wersecie, czy nie, będzie miało decydujące znaczenie dla znalezienia się tego wersetu w wynikach wyszukiwania, ponieważ dla operatora `&` tylko `PRAWDA&PRAWDA` może dać w wyniku `PRAWDĘ`.
 
-Wzorzec ten poszukuje wersetów, w których znajduje się słowo `samolubni` oraz `pyszni`, ale nie znajduje się słowo `chciwi`.
+Wzorzec ten poszukuje wersetów, w których znajdują się słowa `samolubni` oraz `pyszni`, ale nie znajduje się słowo `chciwi`.
 
 Podsumowanie rozdziału II
 -------------------------
@@ -690,9 +690,9 @@ Ten rozdział jest dużo bardziej zaawansowany. Wymaga zrozumienia dwóch poprze
 syn* człow*/i&przyjd*/i
 ```
 
-Ten wzorzec będzie poszukiwał wersetów, które zawierają frazę `syn człow` z różnymi końcówkami, np. `syna człowieczego` itp., nie zważając na wielkość liter plus werset będzie posiadał słowo zaczynające się na `przyjd` i kończące się na dowolnym ciągu znaków, pomijając wielkość liter. Dzięki temu powinniśmy otrzymać wersety, w których mowa jest o przyjściu `Syna Człowieczego`.
+Ten wzorzec będzie poszukiwał wersetów, które zawierają frazę `syn człow` z różnymi końcówkami, np. `syna człowieczego` itp. (nie zważając na wielkość liter) oraz posiadają słowo zaczynające się na `przyjd` i kończące się na dowolnym ciągu znaków (też pomijając wielkość liter). Dzięki temu powinniśmy otrzymać wersety, w których mowa jest o przyjściu `Syna Człowieczego`.
 
-W **Biblii warszawskiej** daje to 13 wersetów, lecz nie wszystkie dotyczą tego tematu.
+W **Biblii Warszawskiej** daje to 13 wersetów, lecz nie wszystkie dotyczą tego tematu.
 
 **Przykład 2**
 
@@ -700,7 +700,7 @@ W **Biblii warszawskiej** daje to 13 wersetów, lecz nie wszystkie dotyczą tego
 Duch* Jezus*|Duch* Chryst*|Duch* Syn*/i
 ```
 
-Ten wzorzec poszukuje w tekstach biblijnych trzech fraz wraz z ich odmianiami: `Duch Jezusa`, `Duch Chrystusa` lub `Duch Syna`. Dzięki temu możemy otrzymać wersety w których `Duch Boży`, `Duch Święty` nazwany jest `Duchem Jezusa`.
+Ten wzorzec poszukuje w tekstach biblijnych trzech fraz z ich odmianami: `Duch Jezusa`, `Duch Chrystusa` lub `Duch Syna`. Dzięki temu możemy otrzymać wersety w których `Duch Boży`, `Duch Święty` nazwany jest `Duchem Jezusa`.
 
 Otrzymamy 6 takich wersetów.
 
@@ -710,7 +710,7 @@ Otrzymamy 6 takich wersetów.
 (dzień/i|dniu/i)&(pań*/i|chryst*/i)
 ```
 
-Za pomocą tego wzorca możemy starać się odnaleźć wersety które mówią o `przyjściu pańskim/Chrystusa`. Pierwszy nawias określa, że werset musi zawierać słowo `dzień` lub słowo `dniu` z pominięciem wielkości znaków. Drugi nawias określa, że werset musi posiadać wyraz rozpoczynający się na `pań` i kończący dowolnym ciągiem (np. `pański` itp.) lub słowo rozpoczynające się na `chryst`, a kończące się dowolnym ciągiem z pominięciem wielkości znaków. Relacja pomiędzy nawiasami to `i`, więc minimalnie w wersecie musi wystąpić po jednym wyrazie z obu nawiasów.
+Za pomocą tego wzorca możemy starać się odnaleźć wersety, które mówią o `przyjściu pańskim/Chrystusa`. Pierwszy nawias określa, że werset musi zawierać słowo `dzień` lub słowo `dniu` z pominięciem wielkości znaków. Drugi nawias określa, że werset musi posiadać wyraz rozpoczynający się na `pań` i kończący dowolnym ciągiem (np. `pański` itp.) lub słowo rozpoczynające się na `chryst`, a kończące się dowolnym ciągiem z pominięciem wielkości znaków. Relacja pomiędzy nawiasami to `i`, więc minimalnie w wersecie musi wystąpić po jednym wyrazie z obu nawiasów.
 
 Odnajduje to 17 wersetów, lecz nie wszystkie pasują do tematu.
 
@@ -721,9 +721,9 @@ Odnajduje to 17 wersetów, lecz nie wszystkie pasują do tematu.
 &~(zwierzęta poznają|poznają go|wtedy wszyscy|poznały mężczyzny|poznały współżycia|Piłat|nader obfitą)
 ```
 
-Ten wzorzec może wydawać się skomplikowany. W rzeczywistości pierwszy nawias określa pewien zbiór słów które mają się pojawić w wersecie, drugi nawias wyklucza z tego zbioru, pewne frazy/słowa które nie pasują do tematu, a występowały w wynikach wyszukiwania. Wzorzec ten służy do odnalezienia fragmentów w których Bóg poprzez swoje działanie chce nas czegoś nauczyć, chce abyśmy wyciągneli jakiś wniosek z jakiejś sytuacji, abyśmy coś o Nim poznali lub coś zrozumieli.
+Ten wzorzec może wydawać się skomplikowany. W rzeczywistości pierwszy nawias określa pewien zbiór słów które mają się pojawić w wersecie, drugi nawias wyklucza z tego zbioru pewne frazy/słowa, które nie pasują do tematu, a występowały w wynikach wyszukiwania. Wzorzec ten służy do odnalezienia fragmentów w których Bóg poprzez swoje działanie chce nas czegoś nauczyć, chce abyśmy wyciągnęli jakiś wniosek z jakiejś sytuacji, abyśmy coś o Nim poznali lub coś zrozumieli.
 
-**Biblia warszawska** daje tutaj 140 wyników, ale nie wszystkie są trafne.
+**Biblia Warszawska** daje tutaj 140 wyników, ale nie wszystkie są trafne.
 
 IV. Funkcje dodatkowe
 =====================
@@ -743,7 +743,7 @@ Taki wzorzec będzie poszukiwał wersetów w których znajduje się pięcioliter
 
 Wynikiem może być np. `Jezus`, `Jesus` itp.
 
-***Ciekawostka: stosując same znaki zapytania np. `????` otrzymamy wersety w których występują 4 literowe słowa. W ten sposób możemy spróbować odnaleźć najdłuższe słowo w wybranym tłumaczeniu.***
+***Ciekawostka: stosując same znaki zapytania np. `????`, otrzymamy wersety w których występują 4 literowe słowa. W ten sposób możemy spróbować odnaleźć najdłuższe słowo w wybranym tłumaczeniu.***
 
 4.2. Kontekst
 -------------
@@ -754,17 +754,17 @@ Kontekst znajduje się na końcu wzorca. Reprezentowany jest za pomocą znaku ma
 @2
 ```
 
-Podając liczbę w kontekscie (1-9) można ustalić w jaki sposób program będzie przeszukiwał Biblię. Domyślnie program sprawdza werset po wersecie sprawdzając, czy spełniony jest wpisany przez użytkownika wzorzec.
+Podając liczbę w kontekście (1-9), można ustalić w jaki sposób program będzie przeszukiwał Biblię. Domyślnie program sprawdza werset po wersecie, sprawdzając, czy spełniony jest wpisany przez użytkownika wzorzec.
 
-W przypadku kontekstu `@2`, program złączy werset 1 z 2 i na takim połączeniu dwóch wersetów, sprawdzi, czy wzorzec jest spełniony. Następnie złączy werset 2 i 3 oraz sprawdzi czy wzorzec występuje w tym układzie, następnie sklei werset 3 i 4 itd.
+W przypadku kontekstu `@2`, program złączy werset 1 z 2 i na takim połączeniu dwóch wersetów sprawdzi, czy wzorzec jest spełniony. Następnie złączy werset 2 i 3 oraz sprawdzi czy wzorzec występuje w tym układzie, następnie sklei werset 3 i 4 itd.
 
 W przypadku kontekstu `@3` przeszukiwane są sklejone wersety 1, 2 i 3, następnie 2, 3 i 4 itd.
 
-Jeśli wzorzec zostanie spełniony w kontekscie 1-3, te trzy wersety zostają dodane do wyników wyszukiwania, a kolejne przeszukiwanie rozpoczyna się od pierwszego kontekstu występującego po ostatnim wyniku (aby nie powielać wyników wyszukiwania), czyli w tym wypadku 4-6.
+Jeśli wzorzec zostanie spełniony w kontekście 1-3, te trzy wersety zostają dodane do wyników wyszukiwania, a kolejne przeszukiwanie rozpoczyna się od pierwszego kontekstu występującego po ostatnim wyniku (aby nie powielać wyników wyszukiwania), czyli w tym wypadku 4-6.
 
 Dzięki kontekstowi możemy poszerzyć obszar poszukiwań konkretnego wzorca w interesującym nas przekładzie, aby być może otrzymać ciekawsze wyniki.
 
-Dla przykładu, jeśli szukany przez nas wzorzec, nie trafi się przeszukując pojedyńcze wersety, może okazać się, że występuje on w szerszym kontekscie i wtedy można użyć tej opcji.
+Dla przykładu, jeśli szukany przez nas wzorzec nie trafi się przy przeszukiwaniu pojedynczych wersetów, może okazać się, że występuje on w szerszym kontekście – ta opcja istnieje, aby to sprawdzić.
 
 **Przykład zastosowania:**
 
@@ -772,7 +772,7 @@ Dla przykładu, jeśli szukany przez nas wzorzec, nie trafi się przeszukując p
 Boga&powstało
 ```
 
-Daje werset w którym występuje `Boga` i `powstało` jednocześnie. W **Biblii warszawskiej** daje to 1 werset. Poszerzając kontekst do dwóch wersetów, otrzymamy 4 wersety:
+Daje werset, w którym występuje `Boga` i `powstało` jednocześnie. W **Biblii Warszawskiej** daje to 1 werset. Poszerzając kontekst do dwóch wersetów, otrzymamy 4 wersety:
 
 ```
 Boga&powstało@2
@@ -785,9 +785,9 @@ To już koniec. Mamy nadzieję, że tematyka zaawansowanego wyszukiwania został
 
 Próg wejścia dla osób nietechnicznych nie jest wcale taki niski. Trzeba opanować parę terminów i koncepcji, ale kiedy to będzie za nami, zaawansowany tryb wyszukiwania może przynieść wiele korzyści, a tworzenie nowych wzorców będzie czymś naturalnym.
 
-Stopień skomplikowania wzorców nie został dotychczas ograniczona programowo, można dowolnie je łączyć jeżeli tylko sprzęt, na którym działa aplikacja jest w stanie stawić czoła poszukiwaniom.
+Stopień skomplikowania wzorców nie został dotychczas ograniczony programowo. Można dowolnie je łączyć, jeżeli tylko sprzęt, na którym działa aplikacja, jest w stanie stawić czoła poszukiwaniom.
 
-Na zakończenie prosimy, aby nie zatrzymywać *perełek* dla siebie. Zachęcamy do [podsyłanie ciekawszych wzorców](https://kontakt.toborek.info), abyśmy mogli utworzyć swego rodzaju bazę, z której korzystać będą mogli wszyscy.
+Na zakończenie prosimy, aby nie zatrzymywać *perełek* dla siebie. Zachęcamy do [podsyłania ciekawszych wzorców](https://kontakt.toborek.info), abyśmy mogli utworzyć swego rodzaju bazę, z której korzystać będą mogli wszyscy.
 
 Owocnego przeszukiwania Biblii!
 
@@ -799,7 +799,7 @@ V. Dodatek
 
 - litery angielskiego alfabetu (duże i małe) a-z
 - polskie litery diakrytyczne (`ąęśćż` itp.)
-- znak apostrofu ' – potrzebny dla angielskich tłumaczeń np. `Christ’s`
+- znak apostrofu ` – potrzebny dla angielskich tłumaczeń np. `Christ`s`
 - znaki cyrylicy
 - greckie litery alfabetu
 - rumuńskie litery alfabetu
@@ -817,23 +817,23 @@ V. Dodatek
 Bóg|Ojciec
 ```
 
-Wyszukaj wersety w których występuje słowo `Bóg` lub `Ojciec` lub oba naraz.
+Wyszukaj wersety, w których występuje słowo `Bóg` lub `Ojciec` lub oba naraz.
 
 ```
 Bóg&(Ojciec|Król/i)
 ```
 
-Wyszukaj wersety w których występuje słowo `Bóg` wraz ze słowem `Ojciec`
+Wyszukaj wersety, w których występuje słowo `Bóg` wraz ze słowem `Ojciec`
 
-lub gdzie występuje słowo `Bóg` wraz ze słowem `Król` przy czym słowo `Król` wyszukuj nie zważając na wielkość liter
+lub gdzie występuje słowo `Bóg` wraz ze słowem `Król`, przy czym słowo `Król` wyszukuj, nie zważając na wielkość liter
 
-lub gdzie występuje słowo `Bóg` wraz ze słowem `Ojciec` wraz ze słowem `Król` przy czym słowo `Król` wyszukuj nie zważając na wielkość liter.
+lub gdzie występuje słowo `Bóg` wraz ze słowem `Ojciec` i słowem `Król`, przy czym słowo `Król` wyszukuj, nie zważając na wielkość liter.
 
 ```
 syn* człow*/i
 ```
 
-Wyszukaj wersety w których występuje np. fraza `syn człowieczy` w różnej formie tzn. `syn człowieczy`, `synowi człowieczemu`, `synem człowieczym` itd.
+Wyszukaj wersety, w których występuje np. fraza `syn człowieczy` w różnej formie, tzn. `syn człowieczy`, `synowi człowieczemu`, `synem człowieczym` itd.
 
 **Niepoprawne wzorce:**
 
@@ -841,13 +841,13 @@ Wyszukaj wersety w których występuje np. fraza `syn człowieczy` w różnej fo
 Chrystus */i
 ```
 
-Wzorzec ten jest niepoprawny, ponieważ gwiazdka przyrostka nie przylega do wyrazu, lecz znajduje się między nimi spacja, poprawna forma to `Chrystus*/i`.
+Wzorzec ten jest niepoprawny, ponieważ gwiazdka przyrostka nie przylega do wyrazu, lecz znajduje się między nimi spacja. Poprawna forma to `Chrystus*/i`.
 
 ```
 * wieczny
 ```
 
-Wzorzec jest niepoprawny, ponieważ gwiazdka przedrostka nie przylega do wyrazu, pomiędzy nimi znajduje się spacja, poprawna forma to `*wieczny`.
+Wzorzec jest niepoprawny, ponieważ gwiazdka przedrostka nie przylega do wyrazu, pomiędzy nimi znajduje się spacja. Poprawna forma to `*wieczny`.
 
 ```
 (dni*|dzień)&&ostatecz*
@@ -898,6 +898,7 @@ Autorzy
 - [Kacper Kość](https://github.com/jaspre) (implementacja rBQL, autor przewodnika)
 - [Rafał Toborek](https://github.com/clash82) (twórca rBiblii, korekty w przewodniku)
 - [Józef Kajfosz](https://www.docelu.biblia.info.pl) (pomysłodawca i twórca programu *Effata*)
+- [Jakub Wardęga](https://www.proz.com/profile/2037613) (korekta tekstu, sugestie i testy rBiblii)
 
 Strona domowa programu: [rbiblia.toborek.info](https://rbiblia.toborek.info)
 
