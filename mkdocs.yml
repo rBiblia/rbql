@@ -1,0 +1,18 @@
+site_name: rBQL – Przewodnik
+repo_url: https://github.com/rBiblia/rbql-docs
+edit_uri: blob/master/docs/
+nav:
+  - index.md
+
+theme:
+  name: readthedocs
+  features:
+    - navigation.expand
+
+markdown_extensions:
+  - pymdownx.superfences:
+      preserve_tabs: true
+  - pymdownx.tabbed
+  - pymdownx.details
+  - toc:
+      permalink: true
