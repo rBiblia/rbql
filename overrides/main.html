@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block analytics %}
+  {{ super() }}
+
+  <script type="text/javascript">
+    var _paq = window._paq || [];
+    _paq.push(['disableAlwaysUseSendBeacon']);
+    _paq.push(['setRequestMethod', 'POST']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analityka.toborek.info/";
+        _paq.push(['setTrackerUrl', u+'rafal.html']);
+        _paq.push(['setSiteId', '35']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'rafal.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+{% endblock %}

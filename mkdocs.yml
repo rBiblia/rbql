@@ -1,13 +1,28 @@
 site_name: rBQL – Przewodnik
-repo_url: https://rbiblia.github.io/rbql/
+site_url: https://rbiblia.github.io/rbql/
+repo_name: rBiblia/rbql
+repo_url: https://github.com/rBiblia/rbql
 edit_uri: blob/master/docs/
 nav:
   - index.md
 
 theme:
-  name: readthedocs
+  name: material
+  palette: teal
+  language: pl
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.expand
+    - search.suggest
+    - search.highlight
+  custom_dir: overrides
+
+plugins:
+  - search
+
+extra:
+  homepage: https://rbiblia.toborek.info
 
 markdown_extensions:
   - pymdownx.superfences:

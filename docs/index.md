@@ -1,4 +1,4 @@
-# rBible Query Language – Przewodnik
+# rBiblia Query Language – Przewodnik
 
 ## Wstęp
 
@@ -838,7 +838,7 @@ Dzięki temu można poprawić czytelność zapisu, zachowując jednocześnie jeg
 Strona domowa programu: [rbiblia.toborek.info](https://rbiblia.toborek.info)
 
 Przewodnik opublikowany jest bezpłatnie w [trybie online](https://rbiblia.github.io/rbql/).
-Wszelkie poprawki i propozycje w tym przewodniku będą bardzo mile widziane. Propozycje zmian oraz sugestie prosimy zgłaszać za pomocą opcji `Pull Request` lub poprzez utworzenie nowego `Issue` w [repozytorium na GitHubie](https://github.com/rBiblia/rbql-docs).
+Wszelkie poprawki i propozycje w tym przewodniku będą bardzo mile widziane. Propozycje zmian oraz sugestie prosimy zgłaszać za pomocą opcji `Pull Request` lub poprzez utworzenie nowego `Issue` w [repozytorium na GitHubie](https://github.com/rBiblia/rbql).
 
 Praca nad programem, tłumaczeniami oraz dokumentacją pochłania środki materialne. Jeżeli możesz, prosimy o [dobrowolne wsparcie projektu](https://rbiblia.toborek.info/donation/).
 
