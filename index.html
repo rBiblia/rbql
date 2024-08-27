@@ -1,0 +1,1693 @@
+
+<!doctype html>
+<html lang="pl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://rbiblia.github.io/rbql/">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>rBQL – Przewodnik</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+  
+      
+
+    
+
+  <script type="text/javascript">
+    var _paq = window._paq || [];
+    _paq.push(['disableAlwaysUseSendBeacon']);
+    _paq.push(['setRequestMethod', 'POST']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="https://analityka.toborek.info/";
+        _paq.push(['setTrackerUrl', u+'rafal.html']);
+        _paq.push(['setSiteId', '35']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'rafal.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rbiblia-query-language-przewodnik" class="md-skip">
+          Przejdź do treści
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Nagłówek">
+    <a href="https://rbiblia.toborek.info" title="rBQL – Przewodnik" class="md-header__button md-logo" aria-label="rBQL – Przewodnik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            rBQL – Przewodnik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              rBiblia Query Language – Przewodnik
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_3">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Szukaj" placeholder="Szukaj" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Szukaj">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Wyczyść" aria-label="Wyczyść" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicjowanie wyszukiwania
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rBiblia/rbql" title="Przejdź do repozytorium" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rBiblia/rbql
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Nawigacja" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://rbiblia.toborek.info" title="rBQL – Przewodnik" class="md-nav__button md-logo" aria-label="rBQL – Przewodnik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    rBQL – Przewodnik
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rBiblia/rbql" title="Przejdź do repozytorium" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rBiblia/rbql
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    rBiblia Query Language – Przewodnik
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    rBiblia Query Language – Przewodnik
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Spis treści
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wstęp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wstęp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definicje
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-podstawowe-operacje" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Podstawowe operacje
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Podstawowe operacje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-wielkosc-liter" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Wielkość liter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-przedrostek" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Przedrostek
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-przyrostek" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Przyrostek
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-aczenie-modyfikatorow-i-przeacznikow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Łączenie modyfikatorów i przełączników
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-fraza" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Fraza
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie-rozdziau-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie rozdziału I
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-operatory-relacji" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Operatory relacji
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Operatory relacji">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-operator-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Operator &amp; (i)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-operator-lub" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Operator | (lub)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-operator-albo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Operator ^ (albo)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-nawiasy-grupujace" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Nawiasy grupujące ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-operator-nie" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Operator ~ (nie)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-priorytet-operatorow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Priorytet operatorów
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie-rozdziau-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie rozdziału II
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-aczenie-modyfikatorow-i-przeacznikow-wraz-z-operatorami" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Łączenie modyfikatorów i przełączników wraz z operatorami
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Łączenie modyfikatorów i przełączników wraz z operatorami">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#przykad-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-funkcje-dodatkowe" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Funkcje dodatkowe
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. Funkcje dodatkowe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-znak-zapytania" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Znak zapytania
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-kontekst" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Kontekst
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-dodatek" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Dodatek
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V. Dodatek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dozwolone-znaki-w-wyrazach" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Dozwolone znaki w wyrazach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-wiecej-przykadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Więcej przykładów
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-rzadziej-uzywane-znaki-na-klawiaturze" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Rzadziej używane znaki na klawiaturze
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-stylowanie-wzorcow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Stylowanie wzorców
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autorzy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autorzy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Spis treści
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wstęp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wstęp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definicje
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-podstawowe-operacje" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Podstawowe operacje
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Podstawowe operacje">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-wielkosc-liter" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Wielkość liter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-przedrostek" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Przedrostek
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-przyrostek" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Przyrostek
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-aczenie-modyfikatorow-i-przeacznikow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Łączenie modyfikatorów i przełączników
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-fraza" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Fraza
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie-rozdziau-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie rozdziału I
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-operatory-relacji" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Operatory relacji
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. Operatory relacji">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-operator-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Operator &amp; (i)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-operator-lub" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Operator | (lub)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-operator-albo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Operator ^ (albo)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-nawiasy-grupujace" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Nawiasy grupujące ()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-operator-nie" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Operator ~ (nie)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-priorytet-operatorow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Priorytet operatorów
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie-rozdziau-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie rozdziału II
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-aczenie-modyfikatorow-i-przeacznikow-wraz-z-operatorami" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Łączenie modyfikatorów i przełączników wraz z operatorami
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. Łączenie modyfikatorów i przełączników wraz z operatorami">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#przykad-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przykad-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przykład 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-funkcje-dodatkowe" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Funkcje dodatkowe
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. Funkcje dodatkowe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-znak-zapytania" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Znak zapytania
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-kontekst" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Kontekst
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podsumowanie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podsumowanie
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-dodatek" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Dodatek
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V. Dodatek">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dozwolone-znaki-w-wyrazach" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Dozwolone znaki w wyrazach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-wiecej-przykadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Więcej przykładów
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-rzadziej-uzywane-znaki-na-klawiaturze" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Rzadziej używane znaki na klawiaturze
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-stylowanie-wzorcow" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Stylowanie wzorców
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autorzy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autorzy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="rbiblia-query-language-przewodnik">rBiblia Query Language – Przewodnik<a class="headerlink" href="#rbiblia-query-language-przewodnik" title="Permanent link">&para;</a></h1>
+<h2 id="wstep">Wstęp<a class="headerlink" href="#wstep" title="Permanent link">&para;</a></h2>
+<p>Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu <strong>Effata</strong>, który stworzony został przez <a href="https://www.docelu.biblia.info.pl">Józefa Kajfosza</a> w latach `90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie <strong>rBQL</strong> (<em>rBiblia Query Language</em> – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:</p>
+<ul>
+<li><em>Rozdział I</em> omawia podstawową jednostkę wyszukiwania – atom (pojedyncze słowo) i możliwości jego rozbudowy.</li>
+<li><em>Rozdział II</em> omawia sposoby budowania relacji pomiędzy atomami za pomocą dozwolonych operatorów: <code>i</code>, <code>lub</code>, <code>albo</code>, <code>nie</code> oraz nawiasów.</li>
+<li><em>Rozdział III</em> przedstawia sposoby łączenia możliwości wyszukiwania z rozdziału I i II w bardziej skomplikowane wzorce.</li>
+<li><em>Rozdział IV</em> pokazuje funkcje dodatkowe, pomocne podczas przeszukiwania.</li>
+</ul>
+<p>Na końcu umieszczony został dodatek, który zawiera dozwolone znaki, przykłady poprawnych i niepoprawnych wzorców oraz umiejscowienie znaków specjalnych na klawiaturze.</p>
+<h3 id="cel">Cel<a class="headerlink" href="#cel" title="Permanent link">&para;</a></h3>
+<p>Celem podręcznika jest wprowadzenie Użytkownika w tematykę wzorców, a dokładniej nauczenie go odczytywania oraz samodzielnego tworzenia zapytań. Poniższy schemat ukazuje budowę wzorca, który będzie omówiony szczegółowo w kolejnych rozdziałach.</p>
+<p><img alt="Przykładowy wzorzec" src="images/pattern.jpg" /></p>
+<h3 id="definicje">Definicje<a class="headerlink" href="#definicje" title="Permanent link">&para;</a></h3>
+<p>Na początek objaśnienie kilku terminów:</p>
+<ul>
+<li><code>Słowo</code> – to pojedynczy ciąg znaków.</li>
+<li><code>Fraza</code> – to słowa oddzielone spacjami, które tworzą spójny ciąg do odnalezienia.</li>
+<li><code>Wzorzec</code> – to zbiór słów/fraz połączonych w relację za pomocą operatorów, opcjonalnie zakończony operatorem kontekstu.</li>
+<li>
+<p><code>Atom</code> – to podstawowa jednostka wyszukiwania, składa się ze słowa lub frazy oraz dodatkowo może składać się z:</p>
+<ul>
+<li>przełącznika wielkości liter (np. <code>słowo/i</code>)</li>
+<li>modyfikatora przedrostka (np. <code>*słowo</code>)</li>
+<li>modyfikatora przyrostka (np. <code>słowo*</code>)</li>
+<li>pytajnika zastępującego jeden dowolny znak (np. <code>s?owo</code>)</li>
+</ul>
+</li>
+</ul>
+<p>Poszczególne elementy, z których zbudowane są wzorce, będą kolejno omawiane poniżej.</p>
+<h2 id="i-podstawowe-operacje">I. Podstawowe operacje<a class="headerlink" href="#i-podstawowe-operacje" title="Permanent link">&para;</a></h2>
+<h3 id="11-wielkosc-liter">1.1. Wielkość liter<a class="headerlink" href="#11-wielkosc-liter" title="Permanent link">&para;</a></h3>
+<p>Wyszukiwarka automatycznie wyszukuje słowa, stosując zadaną wielkość liter. Przykładowo, wyszukując w <strong>Biblii Warszawskiej</strong> słowa <code>bÓg</code>, otrzymamy 9 wyników.</p>
+<p>Opisane zachowanie możemy zmienić za pomocą przełącznika <code>/i</code>.</p>
+<div class="highlight"><pre><span></span><code>bóg/i
+</code></pre></div>
+<p><strong><em>Pamiętaj: przełączniki muszą wystąpić tuż za szukanym słowem/frazą. Oznacza to, że między wyrazem a przełącznikiem nie może wystąpić spacja.</em></strong></p>
+<p>Przełącznik <code>/i</code> jest ustawieniem przypisanym do słowa/frazy – oznacza to, że we wzorcu każde słowo/fraza posiada swój zestaw ustawień. Niektóre słowa/frazy będą więc wyszukiwane tak, jak zostały wpisane, a inne (przy użyciu przełącznika) bez względu na wielkość podanych liter.</p>
+<p><em>i – pochodzi z ang. [i]nsensitive – czyli niewrażliwy (na wielkość liter)</em></p>
+<p><strong>Poprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>bóg/i
+</code></pre></div>
+<p>Wyszukaj wersety, w których występuje dokładnie słowo <code>bÓg</code> [trzyliterowe słowo <code>bÓg</code>], nie zwracając uwagi na wielkość liter.</p>
+<p>Otrzymane wyniki uwzględnią wersety z następującymi wyrazami:</p>
+<ul>
+<li>bóg</li>
+<li>Bóg</li>
+<li>bÓg</li>
+<li>bóG</li>
+<li>BÓg</li>
+<li>bÓG</li>
+<li>BÓG</li>
+</ul>
+<p>Dzięki czemu dla <strong>Biblii Warszawskiej</strong> otrzymamy już 1198 wyników.</p>
+<p><strong>Niepoprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>bóg /i
+</code></pre></div>
+<p>Taki wzorzec jest niepoprawny i zostanie odrzucony przez program, ponieważ przełącznik nie znajduje się zaraz za wyrazem/frazą, ale jest między nimi spacja.</p>
+<p><em>Obecnie w rBiblii występuje tylko jeden przełącznik, ale w przyszłości może pojawić się ich więcej.</em></p>
+<h3 id="12-przedrostek">1.2. Przedrostek<a class="headerlink" href="#12-przedrostek" title="Permanent link">&para;</a></h3>
+<p><em>Przedrostek, czyli z łacińskiego <code>przymocowany na przedzie</code>.</em></p>
+<p>Czasami chcemy znaleźć wersety, które zawierają ten sam wyraz, ale w odmienionej formie. Np. chcemy znaleźć słowo <code>wieczny</code>, ale także <code>przed-wieczny</code>, <code>od-wieczny</code>.</p>
+<p>W tym celu możemy skorzystać z modyfikatora przedrostków – jego symbolem jest gwiazdka umieszczona tuż przed ciągiem.</p>
+<p><strong>Poprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>*wieczny
+</code></pre></div>
+<p>Gwiazdka w tym miejscu oznacza: wyszukaj wersety, w których znajdziesz słowa kończące się na <code>wieczny</code>, ale pozwól, by to słowo rozpoczynało się dowolnymi innymi znakami.</p>
+<p><strong>Niepoprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>* wieczny
+</code></pre></div>
+<p>Jest on niepoprawny, ponieważ między modyfikatorem a wyrazem występuje spacja.</p>
+<ul>
+<li>Samo słowo <code>wieczny</code> daje 30 wyników w <strong>Biblii Warszawskiej</strong></li>
+<li>Słowo <code>*wieczny</code> daje 31 wyników (1 werset zawiera słowo <code>odwieczny</code>)</li>
+</ul>
+<p><strong><em>Pamiętaj: modyfikator przedrostka uwzględnia również trafienia zawierające sam trzon. To znaczy, że w wynikach wyszukiwania dla wzorca <code>*wieczny</code> będą zarówno wersety zawierające dokładnie słowo <code>wieczny</code> i takie, które zawierają słowa kończące się na <code>wieczny</code>, czyli <code>odwieczny</code>, <code>przedwieczny</code> itp.</em></strong></p>
+<h3 id="13-przyrostek">1.3. Przyrostek<a class="headerlink" href="#13-przyrostek" title="Permanent link">&para;</a></h3>
+<p><em>Przyrostek czyli <code>dołączony</code> z j. łacińskiego.</em></p>
+<p>Czasami potrzebne jest wyszukanie wersetów biorące pod uwagę odmiany/końcówki szukanych słów.</p>
+<p>Załóżmy, że chcemy wyszukać słowa: <code>Bogu</code>, <code>Boga</code>, <code>Bogiem</code>.</p>
+<p>Aby utworzyć działający wzorzec, należy przyjrzeć się odmianom i spróbować znaleźć wspólny trzon (w tym przypadku trzonem będzie <code>Bog</code>), a następnie dodać modyfikator przyrostków, czyli gwiazdkę umieszczoną zaraz po wyrazie.</p>
+<p><strong>Poprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>Bog*
+</code></pre></div>
+<p>Taki wzorzec wyszuka wersety, w których występuje słowo zaczynające się od <code>Bog</code> oraz kończące się na dowolnym zestawie znaków, np:</p>
+<ul>
+<li>Bog</li>
+<li>Bogowie</li>
+<li>Bogi</li>
+<li>Bogów</li>
+<li>Bogom</li>
+<li>Bogów</li>
+<li>Bogami</li>
+<li>Bogach itp.</li>
+</ul>
+<p>Wszystkie wersety spełniające to kryterium zostaną zaliczone do wyników wyszukiwania.</p>
+<p><strong>Niepoprawny wzorzec:</strong></p>
+<div class="highlight"><pre><span></span><code>Bog *
+</code></pre></div>
+<p>Taki wzorzec jest niepoprawny, ponieważ pomiędzy gwiazdką a słowem występuje spacja.</p>
+<p><strong><em>Pamiętaj: przy użyciu modyfikatora przyrostka także sam trzon jest liczony jako trafienie. W przypadku wzorca <code>Bog*</code> werset zawierający samo słowo <code>Bog</code> byłby uwzględniony w wynikach wyszukiwania.</em></strong></p>
+<h3 id="14-aczenie-modyfikatorow-i-przeacznikow">1.4. Łączenie modyfikatorów i przełączników<a class="headerlink" href="#14-aczenie-modyfikatorow-i-przeacznikow" title="Permanent link">&para;</a></h3>
+<p>Trzy poprzednie opisy pokazywały dodatkowe opcje, za pomocą których możemy rozszerzyć możliwości wyszukiwania słów/fraz, tj. <strong>przedrostek</strong>, <strong>przyrostek</strong> oraz wyszukiwanie z pominięciem <strong>wielkości liter</strong>.</p>
+<p>Teraz dowiesz się, że elementy te można ze sobą łączyć.</p>
+<div class="highlight"><pre><span></span><code>*wieczn*
+</code></pre></div>
+<p>Taki wzorzec będzie poszukiwał wersetów w których znajdzie:</p>
+<ul>
+<li>odwieczny</li>
+<li>odwieczna</li>
+<li>odwiecznemu</li>
+<li>przedwieczny</li>
+<li>przedwieczna</li>
+<li>przedwiecznemu</li>
+<li>wieczna</li>
+<li>wieczny</li>
+<li>wiecznemu itd.</li>
+</ul>
+<p>Innymi słowy – program będzie poszukiwał wersetów, w których znajduje się wyraz składający się z ciągu <code>wieczn</code>, czyli ciąg <code>wieczn</code> musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania.</p>
+<div class="highlight"><pre><span></span><code>*zmienn*/i
+</code></pre></div>
+<p>Taki wzorzec będzie poszukiwał wersetów w których znajdzie:</p>
+<ul>
+<li>Zmienny</li>
+<li>Odmienny</li>
+<li>odmienny</li>
+<li>przemienny</li>
+<li>przemienna</li>
+<li>Przemienny</li>
+<li>Przemienna</li>
+<li>zmienny</li>
+<li>Zmienna itd.</li>
+</ul>
+<p>Innymi słowy – program będzie poszukiwał wersetów, w których znajdzie wyraz składający się z ciągu <code>zmienn</code>, nie zważając na wielkość liter. Ciąg <code>zmienn</code> musi znaleźć się gdzieś w wersecie, aby został zaliczony do wyników wyszukiwania – nieważne czy pisany dużą, czy małą literą.</p>
+<h3 id="15-fraza">1.5. Fraza<a class="headerlink" href="#15-fraza" title="Permanent link">&para;</a></h3>
+<p>Frazy są to dwa (lub więcej) słowa oddzielone spacją. Program będzie poszukiwał dokładnie takiego ciągu w Biblii.</p>
+<div class="highlight"><pre><span></span><code>Jan Chrzciciel
+</code></pre></div>
+<p>Taki wzorzec będzie poszukiwał wersetów, w których słowo <code>Chrzciciel</code> występuje zaraz po słowie <code>Jan</code> z dokładnie jedną spacją pomiędzy nimi.</p>
+<p><strong>W Biblii Warszawskiej</strong> daje to 6 wyników.</p>
+<p>Poszczególne słowa można uzupełniać o przedrostki i przyrostki:</p>
+<div class="highlight"><pre><span></span><code>Jan* Chrzciciel*
+</code></pre></div>
+<p>Odnajdzie wersety, w których występuje:</p>
+<ul>
+<li>Jan Chrzciciel</li>
+<li>Janowi Chrzcicielowi</li>
+<li>Janem Chrzcicielem itp.</li>
+</ul>
+<p><strong><em>Pamiętaj: przełącznik wielkości liter (<code>/i</code>) ma zastosowanie do całej frazy. Oznacza to, że w przypadku frazy <code>Jan Chrzciciel</code> nie można zastosować <code>Jan/i Chrzciciel</code>, aby słowo <code>Jan</code> było wyszukiwane niezależnie od wielkości liter, a słowo <code>Chrzciciel</code> tak, jak zostało podane.</em></strong></p>
+<p>Modyfikator wielkości liter może wystąpić tylko na końcu frazy:</p>
+<div class="highlight"><pre><span></span><code>Jan Chrzciciel/i
+</code></pre></div>
+<p>Wyszuka frazę <code>Jan Chrzciciel</code>, nie zważając, czy będzie składać się z wielkich czy małych liter, czyli np. <code>Jan chrzciciel</code> także zostanie zaliczony.</p>
+<h3 id="podsumowanie-rozdziau-i">Podsumowanie rozdziału I<a class="headerlink" href="#podsumowanie-rozdziau-i" title="Permanent link">&para;</a></h3>
+<p>W pierwszym rozdziale poznaliśmy podstawową jednostkę wyszukiwania, jaką jest <em>słowo</em>. Następnie nauczyliśmy się, że <em>słowo</em> można uzupełniać o dodatkowe opcje, które mają wpływ na wyniki wyszukiwania. Należą do nich:</p>
+<ul>
+<li>wyszukiwanie niezwracające uwagi na wielkość liter (<code>słowo/i</code>),</li>
+<li>przedrostki (<code>*słowo</code>),</li>
+<li>przyrostki (<code>słowo*</code>),</li>
+<li>frazy (<code>słowo1 słowo2</code>),</li>
+<li>kombinacje powyższych (<code>słowo* *słowo/i</code>).</li>
+</ul>
+<p>Umiejętne stosowanie tych kombinacji przyczyni się do otrzymywania trafniejszych wyników.</p>
+<h2 id="ii-operatory-relacji">II. Operatory relacji<a class="headerlink" href="#ii-operatory-relacji" title="Permanent link">&para;</a></h2>
+<p>W tej części przyjrzymy się, w jaki sposób można łączyć ze sobą słowa. Poznamy kilka operatorów, które służą do budowania relacji między atomami. Ich umiejętne użycie może w rezultacie dać ciekawe studium wybranego tematu. Każdy z operatorów posiada specjalny symbol wprowadzany za pomocą klawiatury. Umiejscowienie znaków specjalnych na klawiaturze zostało przedstawione w dodatku na końcu tego przewodnika.</p>
+<h3 id="21-operator-i">2.1. Operator &amp; (<code>i</code>)<a class="headerlink" href="#21-operator-i" title="Permanent link">&para;</a></h3>
+<p><strong>Symbol:</strong></p>
+<div class="highlight"><pre><span></span><code>&amp;
+</code></pre></div>
+<p><strong>Opis działania:</strong></p>
+<p>Program wyszuka wersety, w których występują zarówno słowa/frazy z lewej i prawej strony operatora <code>&amp;</code>.</p>
+<p><strong>Miejsce na klawiaturze:</strong></p>
+<div class="highlight"><pre><span></span><code>Shift + 7
+</code></pre></div>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>Pan&amp;Bóg
+</code></pre></div>
+<p><em>(czyt. Pan i Bóg)</em> – wyszuka wersety, w których występują zarówno słowa <code>Pan</code> i <code>Bóg</code>.</p>
+<p>W <strong>Biblii Warszawskiej</strong> daje to 466 wyników.</p>
+<p><strong>Tablica prawdy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>lewa strona</th>
+<th>prawa strona</th>
+<th>wynik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-operator-lub">2.2. Operator | (<code>lub</code>)<a class="headerlink" href="#22-operator-lub" title="Permanent link">&para;</a></h3>
+<p><strong>Symbol:</strong></p>
+<div class="highlight"><pre><span></span><code>|
+</code></pre></div>
+<p><strong>Opis działania:</strong></p>
+<p>Program wyszuka wersety, w których występują jedno lub obydwa ze słów/fraz po lewej i prawej operatora <code>|</code>.</p>
+<p><strong>Miejsce na klawiaturze:</strong></p>
+<div class="highlight"><pre><span></span><code>Shift + \
+</code></pre></div>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>Pan|Bóg
+</code></pre></div>
+<p><em>(czyt. Pan lub Bóg)</em> – wyszuka wersety, w których występuje (a) tylko słowo <code>Pan</code> albo <code>Bóg</code> lub (b) obydwa słowa <code>Pan</code> i <code>Bóg</code> naraz.</p>
+<p>W <strong>Biblii Warszawskiej</strong> daje to 3959 wyników.</p>
+<p><strong>Tablica prawdy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>lewa strona</th>
+<th>prawa strona</th>
+<th>wynik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-operator-albo">2.3. Operator ^ (<code>albo</code>)<a class="headerlink" href="#23-operator-albo" title="Permanent link">&para;</a></h3>
+<p><strong>Symbol:</strong></p>
+<div class="highlight"><pre><span></span><code>^
+</code></pre></div>
+<p><strong>Opis działania:</strong></p>
+<p>Program wyszuka wersety, w których występuje tylko jedno ze słów/fraz z lewej bądź prawej strony operatora <code>^</code>.</p>
+<p><strong>Miejsce na klawiaturze:</strong></p>
+<div class="highlight"><pre><span></span><code>Shift + 6
+</code></pre></div>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>Pan^Bóg
+</code></pre></div>
+<p><em>(czyt. Pan albo Bóg)</em> – wyszuka wersety, w których występuje samo słowo <code>Pan</code> albo samo słowo <code>Bóg</code>, ale odrzuci te wersety w których słowa <code>Pan</code> i <code>Bóg</code> występują jednocześnie.</p>
+<p>W <strong>Biblii Warszawskiej</strong> daje to 3493 wyników.</p>
+<p><strong>Tablica prawdy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>lewa strona</th>
+<th>prawa strona</th>
+<th>wynik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+</tr>
+<tr>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+<td>PRAWDA</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+<td>FAŁSZ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-nawiasy-grupujace">2.4. Nawiasy grupujące ()<a class="headerlink" href="#24-nawiasy-grupujace" title="Permanent link">&para;</a></h3>
+<p><strong>Symbol:</strong></p>
+<div class="highlight"><pre><span></span><code>( oraz )
+</code></pre></div>
+<p><strong>Opis działania:</strong></p>
+<p>Za ich pomocą można łączyć słowa/frazy w jedną grupę, aby budować bardziej skomplikowane relacje.</p>
+<p><strong>Miejsce na klawiaturze:</strong></p>
+<div class="highlight"><pre><span></span><code>Shift + 9
+Shift + 0
+</code></pre></div>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>(Bóg^Jezus)&amp;Duch
+</code></pre></div>
+<p><em>(czyt. (Bóg albo Jezus) i Duch)</em> – wyszukaj wersety, w których <code>Bóg</code> jest razem z <code>Duch</code> albo <code>Jezus</code> jest razem z <code>Duch</code>, przy czym <code>Bóg</code> i <code>Jezus</code> nie mogą wystąpić jednocześnie.</p>
+<p>Taka konfiguracja daje 6 znalezionych wyników w <strong>Biblii Warszawskiej</strong>.</p>
+<p><strong>Niepoprawne wzorce nawiasów:</strong></p>
+<div class="highlight"><pre><span></span><code>((Bóg^Jezus)&amp;Duch
+</code></pre></div>
+<p>We wzorcu są dwa nawiasy otwierające, ale tylko jeden nawias zamykający.</p>
+<div class="highlight"><pre><span></span><code>(Bóg^Jezus))&amp;Duch
+</code></pre></div>
+<p>We wzorcu są dwa nawiasy zamykające, ale tylko jeden nawias otwierający.</p>
+<h3 id="25-operator-nie">2.5. Operator ~ (<code>nie</code>)<a class="headerlink" href="#25-operator-nie" title="Permanent link">&para;</a></h3>
+<p><strong>Symbol:</strong></p>
+<div class="highlight"><pre><span></span><code>~
+</code></pre></div>
+<p><strong>Opis działania:</strong></p>
+<p>Program ograniczy wyniki wyszukiwania do wersetów, w których nie występuje zanegowane słowo/fraza.</p>
+<p><strong>Miejsce na klawiaturze:</strong></p>
+<div class="highlight"><pre><span></span><code>Shift + `
+</code></pre></div>
+<p>Operator negacji występuje zawsze przed słowem/frazą lub nawiasem otwierającym. Dzięki zastosowaniu tego operatora można wyłączyć ze zbioru wyników wyszukiwań wersety zawierające podane słowo/frazę lub zestaw słów/fraz.</p>
+<p><strong>Przykłady zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>~Pan&amp;Bóg
+</code></pre></div>
+<p><em>(czyt. nie Pan i Bóg)</em> – wyszuka wszystkie wersety, które zawierają słowo <code>Bóg</code> oraz jednocześnie nie zawierają słowa <code>Pan</code>.</p>
+<p>727 wyników w <strong>Biblii Warszawskiej</strong>.</p>
+<div class="highlight"><pre><span></span><code>Pan&amp;~Bóg
+</code></pre></div>
+<p><em>(czyt. Pan i nie Bóg)</em> – znajdzie wersety, w których znajduje się <code>Pan</code>, ale nie <code>Bóg</code>.</p>
+<p>2766 wyników dla <strong>Biblii Warszawskiej</strong>.</p>
+<div class="highlight"><pre><span></span><code>~(Pan&amp;Bóg)
+</code></pre></div>
+<p><em>(czyt. nie Pan i Bóg)</em> – znajdzie wszystkie wersety, w których wyrazy <code>Pan</code> i <code>Bóg</code> nie występują jednocześnie.</p>
+<p>30697 wyników dla <strong>Biblii Warszawskiej</strong>.</p>
+<p><strong>Przykłady niepoprawnych wzorców:</strong></p>
+<div class="highlight"><pre><span></span><code>Pan~&amp;Bóg
+</code></pre></div>
+<p><em>(Pan nie i Bóg)</em> – operator negacji nie może występować przed innym operatorem.</p>
+<div class="highlight"><pre><span></span><code>Pan&amp;Bóg~
+</code></pre></div>
+<p><em>(Pan i Bóg nie)</em> – ponieważ operator negacji nie może występować jako koniec słowa.</p>
+<p><strong><em>Pamiętaj: choć nie ma to większego sensu, dozwolone jest stosowanie większej liczby negacji. Parzysta liczba negacji da wynik, jakby jej nie było (negacja negacji daje powrót do początku), natomiast nieparzysta liczba negacji da ten sam rezultat, co pojedyncza negacja.</em></strong></p>
+<p><strong><em>Modyfikator przedrostka/przyrostka nie wyklucza trzonu w wynikach wyszukiwań. Na przykład, dla wzorca <code>*wieczny</code> trzon to <code>wieczny</code>, więc wersety, które zawierają dokładne słowo <code>wieczny</code>, będą uwzględnione w wynikach wyszukiwania. Jeśli chcielibyśmy wyszukać wersety zawierające tylko i wyłącznie słowo z jakimkolwiek przedrostkiem, wykluczając wersety, które zawierają sam trzon (np. <code>wieczny</code>), możemy użyć wzorca operatora negacji:</em></strong></p>
+<div class="highlight"><pre><span></span><code>*wieczny&amp;~wieczny
+</code></pre></div>
+<p><strong><em>Wyszukaj wersety, w których słowo <code>wieczny</code> poprzedzone jest jakimś przedrostkiem, ale wyklucz takie wersety, w których występuje tylko słowo <code>wieczny</code>.</em></strong></p>
+<p><strong>Dzięki temu uwzględnimy wyrazy:</strong></p>
+<ul>
+<li>przedwieczny</li>
+<li>odwieczny itp.</li>
+</ul>
+<p><strong>A wykluczymy wyraz:</strong></p>
+<ul>
+<li>wieczny (jako całe jedno słowo)</li>
+</ul>
+<p><strong>Tablica prawdy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>prawa strona</th>
+<th>wynik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRAWDA</td>
+<td>FAŁSZ</td>
+</tr>
+<tr>
+<td>FAŁSZ</td>
+<td>PRAWDA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-priorytet-operatorow">2.6. Priorytet operatorów<a class="headerlink" href="#26-priorytet-operatorow" title="Permanent link">&para;</a></h3>
+<p>W przypadku gdy otrzymujemy niepożądane wyniki, warto zastanowić się nad konstrukcją wzorca oraz czy przypadkiem priorytet operatorów nie koliduje z naszymi intencjami.</p>
+<p>W poprzednim rozdziale opisano operatory <code>i</code>, <code>albo</code>, <code>lub</code>, <code>nie</code> oraz nawiasy. Każdy operator posiada priorytet, aby w przypadku spornych sytuacji, algorytm wiedział w jakiej kolejności należy rozpocząć analizowanie wzorca.</p>
+<p>Poniższa lista przedstawia kolejność priorytetów operatorów (od najwyższego), która brana jest pod uwagę przy analizowaniu wzorca:</p>
+<ol>
+<li><code>()</code> - nawiasy</li>
+<li><code>~</code> - negacja</li>
+<li><code>&amp;</code> - i</li>
+<li><code>^</code> - albo</li>
+<li><code>|</code> - lub</li>
+</ol>
+<p><strong>Przykład 1</strong></p>
+<div class="highlight"><pre><span></span><code>chciwi|chełpliwi^samolubni&amp;pyszni
+</code></pre></div>
+<p><em>(czyt. chciwi lub chełpliwi albo samolubni i pyszni)</em></p>
+<p>Jakich wyników możemy się spodziewać w przypadku powyższego wzorca? Od której pary słów program ma rozpocząć sprawdzanie?</p>
+<ul>
+<li><em>chciwi|chełpliwi</em> ?</li>
+<li><em>chełpliwi^samolubni</em> ?</li>
+<li><em>samolubni&amp;pyszni</em> ?</li>
+</ul>
+<p>Odpowiedź uzyskujemy, znając priorytet operatorów.</p>
+<p>Najwyższy priorytet w podanym przykładzie posiada operator <code>&amp;</code> (czyli <code>i</code>). Algorytm w pierwszej kolejności sprawdzi czy w wersecie znajdują się słowa <code>samolubni</code> i <code>pyszni</code>. Wynikiem operacji będzie <code>PRAWDA</code>, jeśli oba słowa znajdują się w wersecie, bądź <code>FAŁSZ</code> w każdym innym przypadku.</p>
+<p>W kolejnym kroku program będzie posiadał już informację na temat wyniku operacji <code>&amp;</code>, która będzie wykorzystana do dalszych działań. Przyjmując, że oba słowa <code>samolubni</code> i <code>pyszni</code> wystąpiły w aktualnie szukanym wersecie, otrzymamy:</p>
+<div class="highlight"><pre><span></span><code>chciwi|chełpliwi^PRAWDA
+</code></pre></div>
+<p>Kolejnym operatorem znajdującym się wyżej w hierarchii ważności jest operator <code>^</code> (<code>albo</code>). W kolejnym kroku do sprawdzenia zostanie wzięta druga para:</p>
+<div class="highlight"><pre><span></span><code>chełpliwi^PRAWDA
+</code></pre></div>
+<p>Wynikiem operatora <code>^</code> będzie <code>PRAWDA</code>, gdy jedna albo druga strona jest <code>PRAWDĄ</code>, lecz wynikiem będzie <code>FAŁSZ</code>, jeśli obie strony będą <code>PRAWDĄ</code> albo obie strony będą <code>FAŁSZEM</code>.</p>
+<p>W tym przypadku wynikiem operatora <code>^</code> będzie <code>FAŁSZ</code>, jeśli słowo <code>chełpliwi</code> znajduje się w wersecie (ponieważ <code>PRAWDA^PRAWDA</code> = <code>FAŁSZ</code>). W przeciwnym wypadku otrzymalibyśmy <code>PRAWDĘ</code> (<code>FAŁSZ^PRAWDA</code> = <code>PRAWDA</code>).</p>
+<p>Zakładając, że sprawdzamy werset w którym nie występuje słowo <code>chełpliwi</code>, otrzymaliśmy <code>PRAWDĘ</code>.</p>
+<p>Uwzględniając poprzednie wyniki, nasz wzorzec będzie wyglądał następująco:</p>
+<div class="highlight"><pre><span></span><code>chciwi|PRAWDA
+</code></pre></div>
+<p>Operator <code>|</code> zwróci <code>FAŁSZ</code>, tylko gdy obie ze stron będą <code>FAŁSZEM</code>, w przeciwnym wypadku otrzymamy <code>PRAWDĘ</code>.</p>
+<p>Niezależnie czy werset zawiera słowo <code>chciwi</code>, czy nie, werset zostanie zaliczony do wyników wyszukiwania, ponieważ po drugiej stronie otrzymaliśmy już <code>PRAWDĘ</code>.</p>
+<p>Możemy w tym momencie zauważyć, że jeśli werset posiada słowo <code>chciwi</code>, to zostanie zaliczony do wyników wyszukiwania niezależnie od wyniku reszty wzorca, ponieważ nawet gdybyśmy mieli następującą sytuację: <code>PRAWDA|FAŁSZ</code>, ostatecznie wynikiem będzie <code>PRAWDA</code>.</p>
+<p>Podsumowując, wzorzec <strong><em>chciwi|chełpliwi^samolubni&amp;pyszni</em></strong> będzie wyszukiwał wersetów, w których znajdują się jednocześnie słowa (<code>samolubni</code> oraz <code>pyszni</code>) albo znajduje się słowo <code>chełpliwi</code> (przy czym słowa <code>chełpliwi</code>/<code>samolubni</code> i <code>pyszni</code> nie mogą znaleźć się w jednym wersecie jednocześnie). Do wyników wyszukiwania zaliczony zostanie też każdy werset, który zawiera słowo <code>chciwi</code> niezależnie od reszty wzorca.</p>
+<p><strong>Przykład 2</strong></p>
+<div class="highlight"><pre><span></span><code>(chciwi|chełpliwi)^samolubni&amp;pyszni
+</code></pre></div>
+<p>Nawiasy zgrupowały pierwsze dwa wyrazy połączone operatorem <code>|</code>. Ponieważ nawiasy posiadają najwyższy priorytet, sprawdzenie wzorca w danym wersecie rozpocznie się właśnie od nich.</p>
+<div class="highlight"><pre><span></span><code>chciwi|chełpliwi
+</code></pre></div>
+<p>To wyrażenie zwróci <code>FAŁSZ</code>, gdy żadne ze słów nie znajduje się w wersecie. Jeśli pojawi się jedno lub oba, wtedy otrzymamy <code>PRAWDĘ</code>.</p>
+<p>Zakładając, że sprawdzamy werset, w którym nie występuje żadne ze słów, otrzymamy <code>FAŁSZ</code>.</p>
+<p>Analiza wzorca wygląda następująco:</p>
+<div class="highlight"><pre><span></span><code>FAŁSZ^samolubni&amp;pyszni
+</code></pre></div>
+<p>Pozostały już tylko <strong>dwa</strong> operatory do sprawdzenia. Operator <code>&amp;</code> ma pierwszeństwo, więc to on zostanie sprawdzony jako pierwszy.</p>
+<div class="highlight"><pre><span></span><code>samolubni&amp;pyszni
+</code></pre></div>
+<p>Werset musi posiadać oba słowa, aby wynikiem była <code>PRAWDA</code>. Zakładając, że tak się stanie, wynikiem tej operacji będzie <code>PRAWDA</code>.</p>
+<p>Otrzymaliśmy:</p>
+<div class="highlight"><pre><span></span><code>FAŁSZ^PRAWDA
+</code></pre></div>
+<p>Ostatnim operatorem jest <code>^</code>. W tym miejscu następuje ostateczna decyzja, czy zaliczyć obecny werset do wyników wyszukiwania. Operator <code>albo</code> zaliczy werset, jeśli jedna albo druga strona jest <code>PRAWDĄ</code>. Tak jest w tym przypadku, a więc werset zostanie zaliczony do wyników wyszukiwania.</p>
+<p>Wzorzec ten, choć podobny do wzorca z <strong>przykładu 1</strong>, będzie poszukiwał innych wersetów - czyli takich, w których wystąpi słowo <code>chciwi</code> lub <code>chełpliwi</code>, przy czym nie wystąpią jednocześnie słowa <code>samolubni</code> oraz <code>pyszni</code>. Z drugiej strony pokaże wersety, w których występują słowa <code>samolubni</code> oraz <code>pyszni</code>, ale nie znajdą się tam słowa <code>chciwi</code> ani <code>chełpliwi</code>.</p>
+<p><strong>Przykład 3</strong></p>
+<p>W tym przykładzie użyty został operator <code>~</code> (negacji), a obok siebie znajdują się operatory o takim samym priorytecie.</p>
+<div class="highlight"><pre><span></span><code>samolubni&amp;~chciwi&amp;pyszni
+</code></pre></div>
+<p>Operator <code>~</code> jest usytuowany jako drugi w hierarchii priorytetów, więc w podanym przykładzie zostanie on sprawdzony jako pierwszy. Jest to operator jednoargumentowy, tzn. interesuje go tylko słowo/fraza/wynik z nawiasu bezpośrednio do niego przylegającego.</p>
+<div class="highlight"><pre><span></span><code>~chciwi
+</code></pre></div>
+<p>Werset zostanie sprawdzony pod kątem wystąpienia słowa <code>chciwi</code>. Jeżeli słowo zostanie odnalezione, wynikiem operacji będzie <code>PRAWDA</code>. Operator <code>~</code> zamieni <code>PRAWDĘ</code> w <code>FAŁSZ</code> (i analogicznie <code>FAŁSZ</code> w <code>PRAWDĘ</code>). Zakładając, że słowo <code>chciwi</code> nie występuje w szukanym wersecie, zanegowany <code>FAŁSZ</code> da w rezultacie <code>PRAWDĘ</code> i ostatecznie otrzymamy:</p>
+<div class="highlight"><pre><span></span><code>samolubni&amp;PRAWDA&amp;pyszni
+</code></pre></div>
+<p>Dwa operatory <code>&amp;</code> (o tym samym priorytecie) zostaną sprawdzane w takiej kolejności, w jakiej występują we wzorcu:</p>
+<div class="highlight"><pre><span></span><code>samolubni&amp;PRAWDA
+</code></pre></div>
+<p>Zakładając, że przeszukiwany werset zawiera słowo <code>samolubni</code>, otrzymamy: <code>PRAWDA&amp;PRAWDA</code> - co w wyniku da <code>PRAWDĘ</code>:</p>
+<div class="highlight"><pre><span></span><code>PRAWDA&amp;pyszni
+</code></pre></div>
+<p>To czy słowo <code>pyszni</code> znajduje się w wersecie, czy nie, będzie miało decydujące znaczenie dla znalezienia się tego wersetu w wynikach wyszukiwania, ponieważ dla operatora <code>&amp;</code> tylko <code>PRAWDA&amp;PRAWDA</code> może dać w wyniku <code>PRAWDĘ</code>.</p>
+<p>Wzorzec ten poszukuje wersetów, w których znajdują się słowa <code>samolubni</code> oraz <code>pyszni</code>, ale nie znajduje się słowo <code>chciwi</code>.</p>
+<h3 id="podsumowanie-rozdziau-ii">Podsumowanie rozdziału II<a class="headerlink" href="#podsumowanie-rozdziau-ii" title="Permanent link">&para;</a></h3>
+<p>Ten rozdział przedstawiał metody łączenia ze sobą słów/fraz za pomocą 5 operatorów: <code>i</code>, <code>lub</code>, <code>albo</code>, nawiasów i <code>negacji</code>. Pokazane zostały ich przykładowe zastosowania. Zrozumienie zagadnień z tego rozdziału jest kluczowe do tworzenia bardziej skomplikowanych wzorców. Aby w pełni zrozumieć i móc przewidzieć wynik utworzonego wzorca, przydatna jest wiedza z zakresu działania operatorów logicznych <code>NOT</code>, <code>AND</code>, <code>OR</code> oraz <code>XOR</code>.</p>
+<h2 id="iii-aczenie-modyfikatorow-i-przeacznikow-wraz-z-operatorami">III. Łączenie modyfikatorów i przełączników wraz z operatorami<a class="headerlink" href="#iii-aczenie-modyfikatorow-i-przeacznikow-wraz-z-operatorami" title="Permanent link">&para;</a></h2>
+<p>Ten rozdział jest dużo bardziej zaawansowany. Wymaga zrozumienia dwóch poprzednich rozdziałów. Od teraz można przejść do bardziej praktycznych zastosowań. Skupimy się tutaj na kilku przykładach wraz z ich opisem.</p>
+<h3 id="przykad-1">Przykład 1<a class="headerlink" href="#przykad-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>syn* człow*/i&amp;przyjd*/i
+</code></pre></div>
+<p>Ten wzorzec będzie poszukiwał wersetów, które zawierają frazę <code>syn człow</code> z różnymi końcówkami, np. <code>syna człowieczego</code> itp. (nie zważając na wielkość liter) oraz posiadają słowo zaczynające się na <code>przyjd</code> i kończące się na dowolnym ciągu znaków (też pomijając wielkość liter). Dzięki temu powinniśmy otrzymać wersety, w których mowa jest o przyjściu <code>Syna Człowieczego</code>.</p>
+<p>W <strong>Biblii Warszawskiej</strong> daje to 13 wersetów, lecz nie wszystkie dotyczą tego tematu.</p>
+<h3 id="przykad-2">Przykład 2<a class="headerlink" href="#przykad-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Duch* Jezus*|Duch* Chryst*|Duch* Syn*/i
+</code></pre></div>
+<p>Ten wzorzec poszukuje w tekstach biblijnych trzech fraz z ich odmianami: <code>Duch Jezusa</code>, <code>Duch Chrystusa</code> lub <code>Duch Syna</code>. Dzięki temu możemy otrzymać wersety w których <code>Duch Boży</code>, <code>Duch Święty</code> nazwany jest <code>Duchem Jezusa</code>.</p>
+<p>Otrzymamy 6 takich wersetów.</p>
+<h3 id="przykad-3">Przykład 3<a class="headerlink" href="#przykad-3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(dzień/i|dniu/i)&amp;(pań*/i|chryst*/i)
+</code></pre></div>
+<p>Za pomocą tego wzorca możemy starać się odnaleźć wersety, które mówią o <code>przyjściu pańskim/Chrystusa</code>. Pierwszy nawias określa, że werset musi zawierać słowo <code>dzień</code> lub słowo <code>dniu</code> z pominięciem wielkości znaków. Drugi nawias określa, że werset musi posiadać wyraz rozpoczynający się na <code>pań</code> i kończący dowolnym ciągiem (np. <code>pański</code> itp.) lub słowo rozpoczynające się na <code>chryst</code>, a kończące się dowolnym ciągiem z pominięciem wielkości znaków. Relacja pomiędzy nawiasami to <code>i</code>, więc minimalnie w wersecie musi wystąpić po jednym wyrazie z obu nawiasów.</p>
+<p>Odnajduje to 17 wersetów, lecz nie wszystkie pasują do tematu.</p>
+<h3 id="przykad-4">Przykład 4<a class="headerlink" href="#przykad-4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>(abyś poznał|poznacie|poznają|aby poznali|poznasz/i|abyś wiedział|poznały|abyście poznali)
+&amp;~(zwierzęta poznają|poznają go|wtedy wszyscy|poznały mężczyzny|poznały współżycia|Piłat|nader obfitą)
+</code></pre></div>
+<p>Ten wzorzec może wydawać się skomplikowany. W rzeczywistości pierwszy nawias określa pewien zbiór słów które mają się pojawić w wersecie, drugi nawias wyklucza z tego zbioru pewne frazy/słowa, które nie pasują do tematu, a występowały w wynikach wyszukiwania. Wzorzec ten służy do odnalezienia fragmentów w których Bóg poprzez swoje działanie chce nas czegoś nauczyć, chce abyśmy wyciągnęli jakiś wniosek z jakiejś sytuacji, abyśmy coś o Nim poznali lub coś zrozumieli.</p>
+<p><strong>Biblia Warszawska</strong> daje tutaj 140 wyników, ale nie wszystkie są trafne.</p>
+<h2 id="iv-funkcje-dodatkowe">IV. Funkcje dodatkowe<a class="headerlink" href="#iv-funkcje-dodatkowe" title="Permanent link">&para;</a></h2>
+<h3 id="41-znak-zapytania">4.1. Znak zapytania<a class="headerlink" href="#41-znak-zapytania" title="Permanent link">&para;</a></h3>
+<p>Jest to opcja, która wzbogaca atomy. Umieszczenie w którymś miejscu słowa/frazy pytajnika da możliwość zastosowania tzw. <code>dzikiej karty</code>. W tym miejscu słowa może pojawić się dowolny jeden znak.</p>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>Je?us
+</code></pre></div>
+<p>Taki wzorzec będzie poszukiwał wersetów w których znajduje się pięcioliterowe słowo rozpoczynające się od <code>Je</code>, kończące na <code>us</code>, a pomiędzy nimi znajdzie się jeden dowolny znak.</p>
+<p>Wynikiem może być np. <code>Jezus</code>, <code>Jesus</code> itp.</p>
+<p><strong><em>Ciekawostka: stosując same znaki zapytania np. <code>????</code>, otrzymamy wersety w których występują 4 literowe słowa. W ten sposób możemy spróbować odnaleźć najdłuższe słowo w wybranym tłumaczeniu.</em></strong></p>
+<h3 id="42-kontekst">4.2. Kontekst<a class="headerlink" href="#42-kontekst" title="Permanent link">&para;</a></h3>
+<p>Kontekst znajduje się na końcu wzorca. Reprezentowany jest za pomocą znaku małpy oraz następującej po nim liczby z przedziału 1-9.</p>
+<div class="highlight"><pre><span></span><code>@2
+</code></pre></div>
+<p>Podając liczbę w kontekście (1-9), można ustalić w jaki sposób program będzie przeszukiwał Biblię. Domyślnie program sprawdza werset po wersecie, sprawdzając, czy spełniony jest wpisany przez użytkownika wzorzec.</p>
+<p>W przypadku kontekstu <code>@2</code>, program złączy werset 1 z 2 i na takim połączeniu dwóch wersetów sprawdzi, czy wzorzec jest spełniony. Następnie złączy werset 2 i 3 oraz sprawdzi czy wzorzec występuje w tym układzie, następnie sklei werset 3 i 4 itd.</p>
+<p>W przypadku kontekstu <code>@3</code> przeszukiwane są sklejone wersety 1, 2 i 3, następnie 2, 3 i 4 itd.</p>
+<p>Jeśli wzorzec zostanie spełniony w kontekście 1-3, te trzy wersety zostają dodane do wyników wyszukiwania, a kolejne przeszukiwanie rozpoczyna się od pierwszego kontekstu występującego po ostatnim wyniku (aby nie powielać wyników wyszukiwania), czyli w tym wypadku 4-6.</p>
+<p>Dzięki kontekstowi możemy poszerzyć obszar poszukiwań konkretnego wzorca w interesującym nas przekładzie, aby być może otrzymać ciekawsze wyniki.</p>
+<p>Dla przykładu, jeśli szukany przez nas wzorzec nie trafi się przy przeszukiwaniu pojedynczych wersetów, może okazać się, że występuje on w szerszym kontekście – ta opcja istnieje, aby to sprawdzić.</p>
+<p><strong>Przykład zastosowania:</strong></p>
+<div class="highlight"><pre><span></span><code>Boga&amp;powstało
+</code></pre></div>
+<p>Daje werset, w którym występuje <code>Boga</code> i <code>powstało</code> jednocześnie. W <strong>Biblii Warszawskiej</strong> daje to 1 werset. Poszerzając kontekst do dwóch wersetów, otrzymamy 4 wersety:</p>
+<div class="highlight"><pre><span></span><code>Boga&amp;powstało@2
+</code></pre></div>
+<h3 id="podsumowanie">Podsumowanie<a class="headerlink" href="#podsumowanie" title="Permanent link">&para;</a></h3>
+<p>To już koniec. Mamy nadzieję, że tematyka zaawansowanego wyszukiwania została przedstawiona w miarę prostym językiem. Instruktaż ten z pewnością będzie jeszcze aktualizowany w przyszłości, a uwagi są mile widziane.</p>
+<p>Próg wejścia dla osób nietechnicznych nie jest wcale taki niski. Trzeba opanować parę terminów i koncepcji, ale kiedy to będzie za nami, zaawansowany tryb wyszukiwania może przynieść wiele korzyści, a tworzenie nowych wzorców będzie czymś naturalnym.</p>
+<p>Stopień skomplikowania wzorców nie został dotychczas ograniczony programowo. Można dowolnie je łączyć, jeżeli tylko sprzęt, na którym działa aplikacja, jest w stanie stawić czoła poszukiwaniom.</p>
+<p>Na zakończenie prosimy, aby nie zatrzymywać <em>perełek</em> dla siebie. Zachęcamy do <a href="https://kontakt.toborek.info">podsyłania ciekawszych wzorców</a>, abyśmy mogli utworzyć swego rodzaju bazę, z której korzystać będą mogli wszyscy.</p>
+<p>Owocnego przeszukiwania Biblii!</p>
+<h2 id="v-dodatek">V. Dodatek<a class="headerlink" href="#v-dodatek" title="Permanent link">&para;</a></h2>
+<h3 id="51-dozwolone-znaki-w-wyrazach">5.1. Dozwolone znaki w wyrazach<a class="headerlink" href="#51-dozwolone-znaki-w-wyrazach" title="Permanent link">&para;</a></h3>
+<ul>
+<li>litery angielskiego alfabetu (duże i małe) a-z</li>
+<li>polskie litery diakrytyczne (<code>ąęśćż</code> itp.)</li>
+<li>znak apostrofu <code>– potrzebny dla angielskich tłumaczeń np.</code>Christ<code>s</code></li>
+<li>znaki cyrylicy</li>
+<li>greckie litery alfabetu</li>
+<li>rumuńskie litery alfabetu</li>
+<li><code>?</code></li>
+<li>spacja</li>
+<li><code>*</code></li>
+<li><code>/i</code></li>
+</ul>
+<h3 id="52-wiecej-przykadow">5.2. Więcej przykładów<a class="headerlink" href="#52-wiecej-przykadow" title="Permanent link">&para;</a></h3>
+<p><strong>Poprawne wzorce:</strong></p>
+<div class="highlight"><pre><span></span><code>Bóg|Ojciec
+</code></pre></div>
+<p>Wyszukaj wersety, w których występuje słowo <code>Bóg</code> lub <code>Ojciec</code> lub oba naraz.</p>
+<div class="highlight"><pre><span></span><code>Bóg&amp;(Ojciec|Król/i)
+</code></pre></div>
+<p>Wyszukaj wersety, w których występuje słowo <code>Bóg</code> wraz ze słowem <code>Ojciec</code></p>
+<p>lub gdzie występuje słowo <code>Bóg</code> wraz ze słowem <code>Król</code>, przy czym słowo <code>Król</code> wyszukuj, nie zważając na wielkość liter</p>
+<p>lub gdzie występuje słowo <code>Bóg</code> wraz ze słowem <code>Ojciec</code> i słowem <code>Król</code>, przy czym słowo <code>Król</code> wyszukuj, nie zważając na wielkość liter.</p>
+<div class="highlight"><pre><span></span><code>syn* człow*/i
+</code></pre></div>
+<p>Wyszukaj wersety, w których występuje np. fraza <code>syn człowieczy</code> w różnej formie, tzn. <code>syn człowieczy</code>, <code>synowi człowieczemu</code>, <code>synem człowieczym</code> itd.</p>
+<p><strong>Niepoprawne wzorce:</strong></p>
+<div class="highlight"><pre><span></span><code>Chrystus */i
+</code></pre></div>
+<p>Wzorzec ten jest niepoprawny, ponieważ gwiazdka przyrostka nie przylega do wyrazu, lecz znajduje się między nimi spacja. Poprawna forma to <code>Chrystus*/i</code>.</p>
+<div class="highlight"><pre><span></span><code>* wieczny
+</code></pre></div>
+<p>Wzorzec jest niepoprawny, ponieważ gwiazdka przedrostka nie przylega do wyrazu, pomiędzy nimi znajduje się spacja. Poprawna forma to <code>*wieczny</code>.</p>
+<div class="highlight"><pre><span></span><code>(dni*|dzień)&amp;&amp;ostatecz*
+</code></pre></div>
+<p>Powodem błędu jest wystąpienie dwukrotnie znaku <code>&amp;</code> (<code>i</code>) – operatory relacji (<code>&amp;</code>, <code>|</code>, <code>^</code>) mogą występować tylko raz między wyrazami.</p>
+<div class="highlight"><pre><span></span><code>przymierze&amp;(Pan|Bóg))
+</code></pre></div>
+<p>Liczba nawiasów otwierających i zamykających nie jest równa, brakuje tutaj nawiasu otwierającego.</p>
+<h3 id="53-rzadziej-uzywane-znaki-na-klawiaturze">5.3. Rzadziej używane znaki na klawiaturze<a class="headerlink" href="#53-rzadziej-uzywane-znaki-na-klawiaturze" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>~</code> – <em>(tylda)</em> znak negacji</li>
+</ul>
+<p><img alt="negacja" src="images/char_negation.png" /></p>
+<ul>
+<li><code>&amp;</code> – i</li>
+</ul>
+<p><img alt="i" src="images/char_and.png" /></p>
+<ul>
+<li><code>|</code> – lub</li>
+</ul>
+<p><img alt="lub" src="images/char_or.png" /></p>
+<ul>
+<li><code>^</code> – albo</li>
+</ul>
+<p><img alt="albo" src="images/char_xor.png" /></p>
+<h3 id="54-stylowanie-wzorcow">5.4. Stylowanie wzorców<a class="headerlink" href="#54-stylowanie-wzorcow" title="Permanent link">&para;</a></h3>
+<p>Im większy stopień skomplikowania wzorca, tym trudniej zachować jego czytelność. Podczas interpretowania wzorca pomijane są białe znaki takie jak:</p>
+<ul>
+<li>tabulator</li>
+<li>znak nowej linii</li>
+</ul>
+<p>Dzięki temu można poprawić czytelność zapisu, zachowując jednocześnie jego funkcjonalność.</p>
+<p><img alt="stylowanie" src="images/pattern_styling.png" /></p>
+<h2 id="autorzy">Autorzy<a class="headerlink" href="#autorzy" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/jaspre">Kacper Kość</a> (implementacja rBQL, autor przewodnika)</li>
+<li><a href="https://github.com/clash82">Rafał Toborek</a> (twórca rBiblii, korekty w przewodniku)</li>
+<li><a href="https://www.docelu.biblia.info.pl">Józef Kajfosz</a> (pomysłodawca i twórca programu <em>Effata</em>)</li>
+<li><a href="https://www.proz.com/profile/2037613">Jakub Wardęga</a> (korekta tekstu, sugestie i testy rBiblii)</li>
+</ul>
+<p>Strona domowa programu: <a href="https://rbiblia.toborek.info">rbiblia.toborek.info</a></p>
+<p>Przewodnik opublikowany jest bezpłatnie w <a href="https://rbiblia.github.io/rbql/">trybie online</a>.
+Wszelkie poprawki i propozycje w tym przewodniku będą bardzo mile widziane. Propozycje zmian oraz sugestie prosimy zgłaszać za pomocą opcji <code>Pull Request</code> lub poprzez utworzenie nowego <code>Issue</code> w <a href="https://github.com/rBiblia/rbql">repozytorium na GitHubie</a>.</p>
+<p>Praca nad programem, tłumaczeniami oraz dokumentacją pochłania środki materialne. Jeżeli możesz, prosimy o <a href="https://rbiblia.toborek.info/donation/">dobrowolne wsparcie projektu</a>.</p>
+<blockquote>
+<p>Całe Pismo przez Boga jest natchnione i pożyteczne do nauki, do wykrywania błędów, do poprawy, do wychowywania w sprawiedliwości, aby człowiek Boży był doskonały, do wszelkiego dobrego dzieła przygotowany. [2Tym 3:16-17]</p>
+</blockquote>
+<p>&copy; 2020 Soli Deo gloria</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "search.suggest", "search.highlight"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Skopiowano do schowka", "clipboard.copy": "Kopiuj do schowka", "search.result.more.one": "1 wi\u0119cej na tej stronie", "search.result.more.other": "# wi\u0119cej na tej stronie", "search.result.none": "Brak wynik\u00f3w wyszukiwania", "search.result.one": "Wyniki wyszukiwania: 1", "search.result.other": "Wyniki wyszukiwania: #", "search.result.placeholder": "Zacznij pisa\u0107, aby szuka\u0107", "search.result.term.missing": "Brak", "select.version": "Wybierz wersj\u0119"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
