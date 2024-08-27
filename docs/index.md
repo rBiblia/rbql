@@ -2,7 +2,7 @@
 
 ## Wstęp
 
-Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu **Effata**, który stworzony został przez [Józefa Kajfosza](https://www.docelu.biblia.info.pl) w latach `90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie **rBQL** (*rBible Query Language* – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:
+Tryb wyszukiwania zaawansowanego w rBiblii został zaprojektowany na podstawie funkcjonalności programu **Effata**, który stworzony został przez [Józefa Kajfosza](https://www.docelu.biblia.info.pl) w latach `90. Do celów wyszukiwania został zaprojektowany specjalny język o nazwie **rBQL** (*rBiblia Query Language* – czyli język zapytań rBiblii). Składa się on z szeregu symboli/znaków które mają specjalne znaczenie oraz z liter wielu alfabetów, które następnie mogą posłużyć do budowania wzorców (wszystkie dozwolone znaki są zawarte na końcu tego zestawienia). Podręcznik ten został podzielony na kilka rozdziałów:
 
 - *Rozdział I* omawia podstawową jednostkę wyszukiwania – atom (pojedyncze słowo) i możliwości jego rozbudowy.
 - *Rozdział II* omawia sposoby budowania relacji pomiędzy atomami za pomocą dozwolonych operatorów: `i`, `lub`, `albo`, `nie` oraz nawiasów.
