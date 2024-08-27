@@ -1,5 +1,5 @@
 site_name: rBQL – Przewodnik
-repo_url: https://github.com/rBiblia/rbql-docs
+repo_url: https://rbiblia.github.io/rbql/
 edit_uri: blob/master/docs/
 nav:
   - index.md

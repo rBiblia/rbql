@@ -1,4 +1,6 @@
-﻿rBible Query Language - pliki źródłowe Przewodnika
---------------------------------------------------
+﻿rBiblia Query Language (rBQL)
+=============================
 
-Aby zapoznać się z przewodnikiem w trybie online odwiedź [oficjalną stronę](https://rbiblia.toborek.info/rbql/).
+Pliki źródłowe Przewodnika.
+
+Skompilowana wersja dokumentu znajduje się w trybie online pod adresem [https://rbiblia.github.io/rbql/](https://rbiblia.github.io/rbql/).
